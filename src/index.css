@@ -4,11 +4,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* 1. Primary Font Family Stack */
+  /* 1. Master Design System Colors */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-bg: #f8fafc;
+  --color-bg-dark: #0b0f19;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+
+  /* 2. Global Spacing & Layout Rhythm */
+  --spacing-section: clamp(3.5rem, 5vw, 6rem);
+  --spacing-element: 1.5rem;
+
+  /* 3. Border Radii & Transitions */
+  --radius-card: 1.5rem;   /* 24px */
+  --radius-button: 9999px; /* Pill */
+  --transition-speed: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 4. Primary Font Family Stack */
   --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   --font-display: 'Montserrat', var(--font-pretendard);
 
-  /* 2. Fluid Typography Scale Variables (Mobile -> Desktop) */
+  /* 5. Fluid Typography Scale Variables (Mobile -> Desktop) */
   --font-size-h1: clamp(2.5rem, 3.5vw + 1.25rem, 4rem);       /* 40px -> 64px */
   --font-size-h2: clamp(2rem, 2.2vw + 1.25rem, 3rem);         /* 32px -> 48px */
   --font-size-h3: clamp(1.375rem, 0.8vw + 1.125rem, 1.75rem);  /* 22px -> 28px */
@@ -35,19 +54,19 @@
   --fw-body: 400;
   --fw-caption: 500;
 
-  /* 3. Text Color System (Dark Theme Optimization) */
+  /* Text Color System */
   --text-primary: #FFFFFF;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --text-secondary-solid: #B0B8C1;
   --text-muted: rgba(255, 255, 255, 0.4);
 
-  --color-brand-bg: #f8fafc;
-  --color-brand-text-primary: #0f172a;
-  --color-brand-text-secondary: #475569;
-  --color-brand-accent: #2563eb;
-  --color-brand-accent-hover: #1d4ed8;
-  --color-brand-card: #ffffff;
-  --color-brand-border: #e2e8f0;
+  --color-brand-bg: var(--color-bg);
+  --color-brand-text-primary: var(--color-text-primary);
+  --color-brand-text-secondary: var(--color-text-secondary);
+  --color-brand-accent: var(--color-primary);
+  --color-brand-accent-hover: var(--color-primary-hover);
+  --color-brand-card: var(--color-card-bg);
+  --color-brand-border: var(--color-border);
 }
 
 @theme {
@@ -90,17 +109,11 @@ html, body {
   position: relative !important;
 }
 
-/* Global Section Spacing Reset - Compact vertical padding ONLY on non-hero sections */
+/* Global Section Spacing Reset - Consistent vertical rhythm across non-hero sections */
 section:not(#section-hero):not(.hero-section) {
   min-height: auto !important;
   height: auto !important;
-  padding: 4rem 0; /* Approx 64px for Desktop */
-}
-
-@media (max-width: 768px) {
-  section:not(#section-hero):not(.hero-section) {
-    padding: 2.5rem 0; /* Approx 40px for Mobile */
-  }
+  padding: var(--spacing-section) 0 !important;
 }
 
 /* Section Header Title Compact Margins */
@@ -192,19 +205,22 @@ p, li, span, a, button, label, input, textarea {
   text-wrap: pretty;
 }
 
-/* Bright Glassmorphism & Elevated Card utility */
-.glass {
-  background: rgba(255, 255, 255, 0.9);
+/* Bright Glassmorphism & Elevated Card utility using Design System Variables */
+.glass,
+.card-primary {
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
-  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
 }
 
-.glass:hover {
+.glass:hover,
+.card-primary:hover {
   border-color: #cbd5e1;
-  background: #ffffff;
+  background: var(--color-card-bg);
   box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
 }
 
@@ -212,9 +228,39 @@ p, li, span, a, button, label, input, textarea {
   background: #eff6ff;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid #2563eb;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-card);
   box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.15);
-  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* Button Component Utilities using Design System Variables */
+.btn-primary,
+.btn-magnetic,
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-button);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  transition: all var(--transition-speed);
+  will-change: transform;
+}
+
+.btn-primary:hover,
+.btn-magnetic:hover,
+.magnetic-btn:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
 }
 
 /* Soft frosted-glass reflections */

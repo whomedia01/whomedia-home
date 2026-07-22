@@ -19,6 +19,7 @@ export interface EmailResult {
   autoResponderSent: boolean;
   details?: {
     adminEmail: string;
+    bccEmail?: string;
     customerEmail: string;
     timestamp: string;
   };
@@ -109,6 +110,8 @@ ${payload.message}
   // Check for custom endpoint or service provider
   const endpoint = (window as any).WHO_MEDIA_EMAIL_ENDPOINT || (import.meta as any).env?.VITE_EMAIL_ENDPOINT;
 
+  const bccEmail = "whomedia01@naver.com";
+
   if (endpoint) {
     console.log(`🌐 [EmailService] Dispatching request to external email service: ${endpoint}`);
     const res = await fetch(endpoint, {
@@ -116,6 +119,7 @@ ${payload.message}
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         adminEmail: "whomedia6104@gmail.com",
+        bccEmail: bccEmail,
         adminSubject,
         adminBody,
         customerEmail: payload.email,
@@ -135,6 +139,7 @@ ${payload.message}
 
   console.log("==================================================");
   console.log("✅ [EmailService] Admin Notification Email sent to: whomedia6104@gmail.com");
+  console.log(`✅ [EmailService] Admin BCC Copy dispatched to: ${bccEmail}`);
   console.log(`✅ [EmailService] Auto-responder Email sent to: ${payload.email}`);
   console.log("==================================================");
 
@@ -145,6 +150,7 @@ ${payload.message}
     autoResponderSent: true,
     details: {
       adminEmail: "whomedia6104@gmail.com",
+      bccEmail: bccEmail,
       customerEmail: payload.email,
       timestamp
     }

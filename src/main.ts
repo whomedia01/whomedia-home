@@ -7,6 +7,7 @@
 
 import { initGlobalScrollEnabler } from "./modules/globalScroll.ts";
 import { initCustomCursor } from "./modules/customCursor.ts";
+import { initMagneticButtons } from "./modules/magnetic.ts";
 import { initHorizontalScroll, initIntersectionObserver } from "./modules/navigation.ts";
 import { initProcessTimeline } from "./modules/processTimeline.ts";
 import { initPortfolioModal } from "./modules/portfolioModal.ts";
@@ -28,8 +29,9 @@ function initAll(): void {
   // 2. Set dark mode theme class
   document.documentElement.classList.add("dark");
 
-  // 3. Initialize custom video camera pointer & click shockwave FX
+  // 3. Initialize custom video camera pointer, click shockwave FX & magnetic CTA buttons
   initCustomCursor();
+  initMagneticButtons();
 
   // 4. Initialize navigation handlers & IntersectionObserver section highlighting
   initHorizontalScroll();
