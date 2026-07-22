@@ -560,16 +560,23 @@ p, li, span, a, button, label, input, textarea {
   word-break: keep-all;
 }
 
+/* 모바일 화면 (768px 이하) 대응 */
 @media (max-width: 768px) {
   .hero-content {
     padding: 0.5rem 0;
     border-radius: 0;
   }
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2.2rem !important; /* 글자 크기 축소 */
+    line-height: 1.2 !important;  /* 줄 간격 최적화 */
+    word-break: keep-all;        /* 단어 단위로 끊어지게 설정 */
   }
   .hero-description {
     font-size: 1rem;
+  }
+  .hero-content p {
+    font-size: 0.95rem !important; /* 본문 글자 크기 축소 */
+    padding-top: 1rem;
   }
   .hero-description br,
   .hero-title br {
