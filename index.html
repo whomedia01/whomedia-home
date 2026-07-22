@@ -9,6 +9,17 @@
   </head>
   <body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
     
+    <!-- Ambient AI Background Container (Aura & Cybernetic Grid) -->
+    <div id="ai-background-container" class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none select-none">
+      <!-- Cybernetic Grid Overlay -->
+      <div class="cyber-grid-overlay absolute inset-0"></div>
+
+      <!-- Ambient AI Glowing Auras -->
+      <div class="ai-aura ai-aura-1"></div>
+      <div class="ai-aura ai-aura-2"></div>
+      <div class="ai-aura ai-aura-3"></div>
+    </div>
+
     <!-- Floating Navigation Header -->
     <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 px-6 md:px-12 flex justify-between items-center bg-transparent">
       <div class="flex items-center gap-3">
@@ -84,16 +95,35 @@
       
       <!-- Section 1: Hero (Immersive Cinematic Dark Video Background) -->
       <section id="section-hero" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-[#090d16]">
-        <!-- Immersive Cinematic High-Tech Corporate Video Background -->
+        <!-- Immersive Cinematic High-Tech Corporate Video Background (Broadcasting Studio & Control Room) -->
         <div class="video-background-container select-none">
+          <!-- Neon Blue & Innovation Purple Ambient Studio Accents -->
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
+          <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
+
+          <!-- Direct 4K/1080p Studio Control Room Video Loop -->
+          <video 
+            id="hero-bg-video-element"
+            class="video-background-video absolute inset-0 w-full h-full object-cover z-0"
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            poster="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&q=80"
+            style="filter: brightness(0.65) contrast(1.18) saturate(1.12);"
+          >
+            <source src="https://cdn.coverr.co/videos/coverr-server-room-with-blue-lights-2646/1080p.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-server-room-with-blue-lights-42861-large.mp4" type="video/mp4" />
+          </video>
+
           <iframe 
             id="hero-bg-video"
-            class="video-background-iframe"
+            class="video-background-iframe z-0"
             src="https://www.youtube.com/embed/PAvJORGcUTU?autoplay=1&mute=1&loop=1&playlist=PAvJORGcUTU&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0&autohide=1&playsinline=1&enablejsapi=1"
-            title="에듀팡 일본어 인트로 - (주)후미디어"
+            title="방송 프로덕션 스튜디오 컨트롤 룸 - (주)후미디어"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            style="filter: brightness(0.68) contrast(1.15) saturate(1.1);"
+            style="filter: brightness(0.68) contrast(1.15) saturate(1.1); opacity: 0.85;"
             allowfullscreen>
           </iframe>
         </div>
@@ -420,9 +450,145 @@
           </div>
 
           <!-- Video Grid: Responsive Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" id="portfolio-video-grid">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="portfolio-video-grid">
             
-            <!-- Video Card 1 (x4Cb5At6Z_M) -->
+            <!-- Video Card 1 (0z8asqx3tAA) -->
+            <div data-category="brand" data-video-id="0z8asqx3tAA" data-title="NE능률_인터뷰" title="NE능률_인터뷰" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/0z8asqx3tAA/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">기업 인터뷰</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  NE능률_인터뷰
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 2 (jtdlXtNebG4) -->
+            <div data-category="brand" data-video-id="jtdlXtNebG4" data-title="에듀템_인공지능 SPEAKING TOP" title="에듀템_인공지능 SPEAKING TOP" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/jtdlXtNebG4/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-indigo-600 rounded self-start uppercase shadow-xs">AI 솔루션</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  에듀템_인공지능 SPEAKING TOP
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 3 (DIdduzeub5U) -->
+            <div data-category="brand" data-video-id="DIdduzeub5U" data-title="유튜브 채널 인트로" title="유튜브 채널 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/DIdduzeub5U/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">채널 인트로</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  유튜브 채널 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 4 (vZI7RkelDRg) -->
+            <div data-category="public" data-video-id="vZI7RkelDRg" data-title="AI DT 영어 교과서 인트로" title="AI DT 영어 교과서 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/vZI7RkelDRg/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">AI DT 교과서</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  AI DT 영어 교과서 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 5 (dEPkxRTjsy8) -->
+            <div data-category="brand" data-video-id="dEPkxRTjsy8" data-title="한양대 토크콘서트 인트로" title="한양대 토크콘서트 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/dEPkxRTjsy8/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-indigo-600 rounded self-start uppercase shadow-xs">대학 토크콘서트</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  한양대 토크콘서트 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 6 (PTqpVR-yIKg) -->
+            <div data-category="lms" data-video-id="PTqpVR-yIKg" data-title="경희사이버대학 크로마키" title="경희사이버대학 크로마키" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/PTqpVR-yIKg/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">사이버대학 강좌</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  경희사이버대학 크로마키
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 7 (JwCrB4dKgDU) -->
+            <div data-category="lms" data-video-id="JwCrB4dKgDU" data-title="테블릿 강의" title="테블릿 강의" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/JwCrB4dKgDU/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">태블릿 강의</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  테블릿 강의
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 8 (AbeWeusmjws) -->
+            <div data-category="studio" data-video-id="AbeWeusmjws" data-title="전자칠판" title="전자칠판" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/AbeWeusmjws/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">전자칠판 강의</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  전자칠판
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 9 (x4Cb5At6Z_M) -->
             <div data-category="brand" data-video-id="x4Cb5At6Z_M" data-title="CG 인터랙티브 강의" title="CG 인터랙티브 강의" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/x4Cb5At6Z_M/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -439,7 +605,7 @@
               </div>
             </div>
 
-            <!-- Video Card 2 (WaxhtAZLLV8) -->
+            <!-- Video Card 10 (WaxhtAZLLV8) -->
             <div data-category="lms" data-video-id="WaxhtAZLLV8" data-title="크로마키 촬영" title="크로마키 촬영" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/WaxhtAZLLV8/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -456,7 +622,7 @@
               </div>
             </div>
 
-            <!-- Video Card 3 (rJ2U9T27WwU) -->
+            <!-- Video Card 11 (rJ2U9T27WwU) -->
             <div data-category="brand" data-video-id="rJ2U9T27WwU" data-title="태진옥 홍보영상" title="태진옥 홍보영상" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/rJ2U9T27WwU/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -473,7 +639,7 @@
               </div>
             </div>
 
-            <!-- Video Card 4 (paYW3d0MRqk) -->
+            <!-- Video Card 12 (paYW3d0MRqk) -->
             <div data-category="studio" data-video-id="paYW3d0MRqk" data-title="EBS 올쏘 인트로" title="EBS 올쏘 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/paYW3d0MRqk/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -490,24 +656,7 @@
               </div>
             </div>
 
-            <!-- Video Card 5 (vZI7RkelDRg) -->
-            <div data-category="public" data-video-id="vZI7RkelDRg" data-title="AI DT 영어 교과서 인트로" title="AI DT 영어 교과서 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
-              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/vZI7RkelDRg/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
-              
-              <div class="relative z-10 flex flex-col gap-2">
-                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">위탁교육</span>
-                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
-                  AI DT 영어 교과서 인트로
-                </h3>
-                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
-                  <span>자세히 보기</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Video Card 6 (M2YRU_KE06I) -->
+            <!-- Video Card 13 (M2YRU_KE06I) -->
             <div data-category="brand" data-video-id="M2YRU_KE06I" data-title="에듀템_ ELA AI솔루션" title="에듀템_ ELA AI솔루션" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/M2YRU_KE06I/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -524,7 +673,7 @@
               </div>
             </div>
 
-            <!-- Video Card 7 (4cnYAzIvagw) -->
+            <!-- Video Card 14 (4cnYAzIvagw) -->
             <div data-category="lms" data-video-id="4cnYAzIvagw" data-title="동아출판_선생님이 동아출판 AI 디지털 교과서를 말하다 (인터뷰)" title="동아출판_선생님이 동아출판 AI 디지털 교과서를 말하다 (인터뷰)" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/4cnYAzIvagw/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -541,7 +690,7 @@
               </div>
             </div>
 
-            <!-- Video Card 8 (nzSjVbxNrnc) -->
+            <!-- Video Card 15 (nzSjVbxNrnc) -->
             <div data-category="studio" data-video-id="nzSjVbxNrnc" data-title="NE능률_나는쌤이다 (나는솔로 패러디)" title="NE능률_나는쌤이다 (나는솔로 패러디)" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/nzSjVbxNrnc/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -558,7 +707,7 @@
               </div>
             </div>
 
-            <!-- Video Card 9 (cF7i6m9apsE) -->
+            <!-- Video Card 16 (cF7i6m9apsE) -->
             <div data-category="brand" data-video-id="cF7i6m9apsE" data-title="EBS 포텐시리즈 인트로" title="EBS 포텐시리즈 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/cF7i6m9apsE/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -575,7 +724,7 @@
               </div>
             </div>
 
-            <!-- Video Card 10 (PAvJORGcUTU) -->
+            <!-- Video Card 17 (PAvJORGcUTU) -->
             <div data-category="brand" data-video-id="PAvJORGcUTU" data-title="에듀팡 일본어 인트로" title="에듀팡 일본어 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/PAvJORGcUTU/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
@@ -612,13 +761,13 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
             <!-- Link Hub Card 1: Media Production & Creative Network -->
-            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+            <div class="flip-card-container perspective-1000 min-h-[520px] cursor-pointer">
               <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
                 
                 <!-- FRONT FACE: Concept Image -->
                 <div class="flip-card-front relative flex flex-col justify-between p-8 text-white bg-slate-900 border border-slate-200/80">
-                  <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop" 
-                       alt="방송국 미디어 주조정실 및 프로덕션 스튜디오" 
+                  <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop" 
+                       alt="4K 방송 장비 및 시네마 프로덕션 카메라 스튜디오" 
                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
                        referrerpolicy="no-referrer" />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30"></div>
@@ -697,13 +846,13 @@
             </div>
 
             <!-- Link Hub Card 2: WHO CAMPUS -->
-            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+            <div class="flip-card-container perspective-1000 min-h-[520px] cursor-pointer">
               <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
                 
                 <!-- FRONT FACE: Concept Image -->
                 <div class="flip-card-front relative flex flex-col justify-between p-8 text-white bg-slate-900 border border-slate-200/80">
-                  <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop" 
-                       alt="WHO CAMPUS 평생교육원" 
+                  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1000&auto=format&fit=crop" 
+                       alt="후캠퍼스 대형 스크린 빔 프로젝터 강의 현장" 
                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
                        referrerpolicy="no-referrer" />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30"></div>
@@ -737,7 +886,7 @@
                   <div class="absolute -top-10 -right-10 w-44 h-44 bg-blue-500/10 rounded-full filter blur-3xl"></div>
                   
                   <div>
-                    <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center justify-between mb-5">
                       <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -749,24 +898,28 @@
                       </span>
                     </div>
 
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-3">후캠퍼스<br /><span class="inline-block mt-1">온·오프라인 평생교육원</span></h3>
-                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-6 font-medium">
-                      평생 교육 자산 형성을 모토로 인가받은 평생교육 기관 후캠퍼스 플랫폼을 운영합니다. 수만 명의 직무 교육 및 자격 과정, 온라인과 오프라인 현장 강의를 아우르는 맞춤형 전문 아카데미 시스템을 지원합니다.
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">후캠퍼스 온·오프라인 평생교육원</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4 font-medium">
+                      평생 교육 자산 형성을 모토로 기업 및 개인의 성장을 지원하는 인가받은 맞춤형 평생교육 플랫폼입니다.
                     </p>
 
-                    <ul class="space-y-2.5">
-                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
-                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
-                        <span>기업체 필수 법정 의무 교육 및 온·오프라인 맞춤형 직무 수료 과정 지원</span>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>B2B / B2G 맞춤형 교육 컨설팅</strong>: 조직 진단 및 실질적 업무 성과 향상을 위한 맞춤 커리큘럼 설계</span>
                       </li>
-                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
-                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
-                        <span>차세대 LMS 시스템과 온·오프라인 교육 인프라를 통합한 원스톱 솔루션</span>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>생애주기별 인재 양성 프로젝트</strong>: 대학생 진로·취업 강화부터 직장인 전문 스펙 고도화까지 인재 육성</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>온·오프라인 하이브리드 에듀 인프라</strong>: 국비지원 연계 및 최상위 전문가 그룹의 온라인 스트리밍 시스템</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div class="mt-8 pt-6 border-t border-slate-200">
+                  <div class="mt-6 pt-5 border-t border-slate-200">
                     <a href="https://hucampus.co.kr" target="_blank" class="clickable inline-flex items-center gap-2 text-xs font-bold text-slate-900 tracking-widest hover:text-blue-600 transition-colors">
                       후캠퍼스 학습 플랫폼 바로가기
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -780,7 +933,7 @@
             </div>
 
             <!-- Link Hub Card 3: Media & Journalism -->
-            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+            <div class="flip-card-container perspective-1000 min-h-[520px] cursor-pointer">
               <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
                 
                 <!-- FRONT FACE: Concept Image -->

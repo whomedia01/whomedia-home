@@ -1,10 +1,58 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* 1. Primary Font Family Stack */
+  --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-display: 'Montserrat', var(--font-pretendard);
+
+  /* 2. Fluid Typography Scale Variables (Mobile -> Desktop) */
+  --font-size-h1: clamp(2.5rem, 3.5vw + 1.25rem, 4rem);       /* 40px -> 64px */
+  --font-size-h2: clamp(2rem, 2.2vw + 1.25rem, 3rem);         /* 32px -> 48px */
+  --font-size-h3: clamp(1.375rem, 0.8vw + 1.125rem, 1.75rem);  /* 22px -> 28px */
+  --font-size-body1: clamp(1rem, 0.3vw + 0.925rem, 1.125rem); /* 16px -> 18px */
+  --font-size-body2: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);   /* 14px -> 16px */
+  --font-size-caption: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem); /* 12px -> 14px */
+
+  /* Line Heights & Letter Spacing */
+  --lh-h1: 1.2;
+  --lh-h2: 1.3;
+  --lh-h3: 1.4;
+  --lh-body: 1.6;
+  --lh-caption: 1.4;
+
+  --ls-h1: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-h3: -0.01em;
+  --ls-caption: 0.01em;
+
+  /* Font Weights */
+  --fw-h1: 800;
+  --fw-h2: 700;
+  --fw-h3: 600;
+  --fw-body: 400;
+  --fw-caption: 500;
+
+  /* 3. Text Color System (Dark Theme Optimization) */
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-secondary-solid: #B0B8C1;
+  --text-muted: rgba(255, 255, 255, 0.4);
+
+  --color-brand-bg: #f8fafc;
+  --color-brand-text-primary: #0f172a;
+  --color-brand-text-secondary: #475569;
+  --color-brand-accent: #2563eb;
+  --color-brand-accent-hover: #1d4ed8;
+  --color-brand-card: #ffffff;
+  --color-brand-border: #e2e8f0;
+}
 
 @theme {
-  --font-sans: 'Noto Sans KR', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
+  --font-sans: var(--font-pretendard);
+  --font-display: var(--font-display);
   
   --color-brand-bg: #f8fafc;
   --color-brand-text-primary: #0f172a;
@@ -19,11 +67,71 @@
 html, body {
   background-color: #f8fafc;
   color: #0f172a;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: var(--font-pretendard);
   overflow-x: hidden;
   overscroll-behavior-y: none;
   word-break: keep-all;
   overflow-wrap: break-word;
+}
+
+/* Typography Utility Classes */
+.typo-h1 {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-h1);
+  font-weight: var(--fw-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+}
+
+.typo-h2 {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-h2);
+  font-weight: var(--fw-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+}
+
+.typo-h3 {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-h3);
+  font-weight: var(--fw-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.typo-body1 {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-body1);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+}
+
+.typo-body2 {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-body2);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+}
+
+.typo-caption {
+  font-family: var(--font-pretendard);
+  font-size: var(--font-size-caption);
+  font-weight: var(--fw-caption);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+}
+
+/* Text Color Classes */
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
 }
 
 /* Optimized Mobile Korean Typography & Line Wrapping */
@@ -123,13 +231,16 @@ p, li, span, a, button, label, input, textarea {
 
   .custom-cursor-dot,
   .custom-cursor-ring {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
     opacity: 0;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    z-index: 99999;
+    visibility: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform-origin: center center;
     will-change: transform;
     transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
@@ -144,18 +255,17 @@ p, li, span, a, button, label, input, textarea {
   }
 
   .custom-cursor-ring {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border: 2px solid #ff2a3d;
-    background-color: rgba(9, 13, 22, 0.94);
-    backdrop-filter: blur(16px);
+    background-color: rgba(9, 13, 22, 0.92);
+    backdrop-filter: blur(12px);
     border-radius: 50%;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 42, 61, 0.5);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 42, 61, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: visible;
   }
 
@@ -164,26 +274,26 @@ p, li, span, a, button, label, input, textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -2px;
+    margin-top: -1px;
   }
 
   .custom-cursor-camera-svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     color: #ff2a3d;
-    filter: drop-shadow(0 0 10px rgba(255, 42, 61, 0.9));
+    filter: drop-shadow(0 0 8px rgba(255, 42, 61, 0.9));
     transition: transform 0.2s ease, color 0.2s ease;
   }
 
   .camera-rec-dot {
     position: absolute;
-    top: -3px;
-    right: -3px;
-    width: 7px;
-    height: 7px;
+    top: -2px;
+    right: -2px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background-color: #ff2a3d;
-    box-shadow: 0 0 10px #ff2a3d;
+    box-shadow: 0 0 8px #ff2a3d;
     animation: recPulse 1s ease-in-out infinite alternate;
   }
 
@@ -194,22 +304,19 @@ p, li, span, a, button, label, input, textarea {
     }
     100% {
       opacity: 1;
-      transform: scale(1.4);
+      transform: scale(1.3);
     }
   }
 
   /* Custom Cursor text label inside the ring */
   .custom-cursor-text {
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 900;
     letter-spacing: 0.15em;
     color: #ffffff;
-    position: absolute;
-    bottom: 3px;
+    margin-top: 1px;
     opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
     white-space: nowrap;
     user-select: none;
     z-index: 10;
@@ -218,16 +325,16 @@ p, li, span, a, button, label, input, textarea {
 
   /* Hover States: General Interactive Elements (Links, Buttons, Tabs) */
   body.cursor-hovering .custom-cursor-ring {
-    width: 68px;
-    height: 68px;
+    width: 64px;
+    height: 64px;
     border-color: #ff2a3d;
-    background-color: rgba(9, 13, 22, 0.98);
-    box-shadow: 0 0 32px rgba(255, 42, 61, 0.7), inset 0 0 20px rgba(255, 42, 61, 0.3);
+    background-color: rgba(9, 13, 22, 0.96);
+    box-shadow: 0 0 32px rgba(255, 42, 61, 0.6), inset 0 0 20px rgba(255, 42, 61, 0.25);
   }
 
   body.cursor-hovering .custom-cursor-camera-svg {
     color: #ffffff;
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 
   body.cursor-hovering .custom-cursor-dot {
@@ -237,36 +344,22 @@ p, li, span, a, button, label, input, textarea {
     box-shadow: 0 0 18px #ff2a3d;
   }
 
-  body.cursor-hovering .custom-cursor-text {
-    opacity: 1;
-    transform: scale(1.1);
-    color: #ff2a3d;
-    text-shadow: 0 0 12px rgba(255, 42, 61, 0.9);
-  }
-
   /* Hover States: Visual items (e.g. Portfolio Videos, Playable Sliders) */
   body.cursor-viewing .custom-cursor-ring {
-    width: 82px;
-    height: 82px;
+    width: 76px;
+    height: 76px;
     border-color: #ff2a3d;
-    background-color: rgba(9, 13, 22, 0.98);
-    box-shadow: 0 10px 36px rgba(255, 42, 61, 0.6), 0 0 24px rgba(255, 42, 61, 0.4);
+    background-color: rgba(9, 13, 22, 0.96);
+    box-shadow: 0 8px 32px rgba(255, 42, 61, 0.6), 0 0 24px rgba(255, 42, 61, 0.4);
   }
 
   body.cursor-viewing .custom-cursor-camera-svg {
     color: #ff2a3d;
-    transform: scale(1.3);
+    transform: scale(1.25);
   }
 
   body.cursor-viewing .custom-cursor-dot {
     opacity: 0 !important;
-  }
-
-  body.cursor-viewing .custom-cursor-text {
-    opacity: 1;
-    transform: scale(1.15);
-    color: #ffffff;
-    text-shadow: 0 0 14px rgba(255, 42, 61, 0.9);
   }
 
   /* Click Impact Wave Styles */
@@ -286,20 +379,14 @@ p, li, span, a, button, label, input, textarea {
     will-change: transform, opacity;
   }
 
-  .custom-cursor-particle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 5px;
-    background-color: #60a5fa;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
-    box-shadow: 0 0 8px #3b82f6, 0 0 15px rgba(59, 130, 246, 0.4);
-    will-change: transform, opacity;
+  /* Touch / Mobile device fallback */
+  @media (hover: none), (pointer: coarse) {
+    .custom-cursor-dot,
+    .custom-cursor-ring,
+    .custom-cursor-ripple,
+    .custom-cursor-particle {
+      display: none !important;
+    }
   }
 }
 
@@ -675,6 +762,108 @@ html.dark #video-modal .bg-white {
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+/* ==========================================================================
+   AI Premium Visual Effects (Aura, Cyber Grid, Text Decode)
+   ========================================================================== */
+
+/* Cybernetic Micro-Grid Background Overlay */
+.cyber-grid-overlay {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+/* Ambient AI Aura (Breathing Background Glow) */
+.ai-aura {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.ai-aura-1 {
+  width: 45vw;
+  height: 45vw;
+  max-width: 650px;
+  max-height: 650px;
+  top: -5%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.03) 70%, transparent 100%);
+  animation: auraFloat1 18s ease-in-out infinite alternate;
+}
+
+.ai-aura-2 {
+  width: 50vw;
+  height: 50vw;
+  max-width: 700px;
+  max-height: 700px;
+  top: 35%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(139, 92, 246, 0.03) 70%, transparent 100%);
+  animation: auraFloat2 22s ease-in-out infinite alternate;
+}
+
+.ai-aura-3 {
+  width: 40vw;
+  height: 40vw;
+  max-width: 600px;
+  max-height: 600px;
+  bottom: 5%;
+  left: -5%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.14) 0%, rgba(14, 165, 233, 0.02) 70%, transparent 100%);
+  animation: auraFloat3 20s ease-in-out infinite alternate;
+}
+
+@keyframes auraFloat1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(100px, 70px) scale(1.15);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(-50px, 120px) scale(0.95);
+    opacity: 0.18;
+  }
+}
+
+@keyframes auraFloat2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.16;
+  }
+  50% {
+    transform: translate(-120px, -80px) scale(1.2);
+    opacity: 0.26;
+  }
+  100% {
+    transform: translate(70px, -100px) scale(0.92);
+    opacity: 0.14;
+  }
+}
+
+@keyframes auraFloat3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate(90px, -70px) scale(1.1);
+    opacity: 0.22;
+  }
+  100% {
+    transform: translate(-70px, 50px) scale(1.02);
+    opacity: 0.16;
+  }
+}
+
 
 
 

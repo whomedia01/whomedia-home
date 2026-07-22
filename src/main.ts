@@ -186,6 +186,7 @@ function initAll() {
   initContactForm();
   initMobileMenu();
   initFlipCards();
+  initAiTextDecodeAnimation();
 }
 
 /**
@@ -206,6 +207,11 @@ if (document.readyState === "loading") {
  * Custom Camera Video Pointer Logic
  */
 function initCustomCursor() {
+  // Mobile / touch safety check: disable custom cursor on touch devices
+  if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+    return;
+  }
+
   // Check if cursor elements already exist to prevent duplicates
   let dot = document.querySelector(".custom-cursor-dot") as HTMLElement;
   let ring = document.querySelector(".custom-cursor-ring") as HTMLElement;
@@ -214,57 +220,110 @@ function initCustomCursor() {
     dot = document.createElement("div");
     dot.className = "custom-cursor-dot";
     document.body.appendChild(dot);
+  } else if (dot.parentElement !== document.body) {
+    document.body.appendChild(dot);
   }
 
   if (!ring) {
     ring = document.createElement("div");
     ring.className = "custom-cursor-ring";
-    ring.innerHTML = `
-      <div class="custom-cursor-camera-box">
-        <svg class="custom-cursor-camera-svg" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-3.69-2.213a.75.75 0 0 1-.375-.647V8.11a.75.75 0 0 1 .375-.647l3.69-2.213a.75.75 0 0 1 1.135.647v12.206a.75.75 0 0 1-1.135.647Z" />
-        </svg>
-        <span class="camera-rec-dot"></span>
-      </div>
-      <span class="custom-cursor-text">WHO</span>
-    `;
+    document.body.appendChild(ring);
+  } else if (ring.parentElement !== document.body) {
     document.body.appendChild(ring);
   }
 
+  ring.innerHTML = `
+    <div class="custom-cursor-camera-box">
+      <svg class="custom-cursor-camera-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-3.69-2.213a.75.75 0 0 1-.375-.647V8.11a.75.75 0 0 1 .375-.647l3.69-2.213a.75.75 0 0 1 1.135.647v12.206a.75.75 0 0 1-1.135.647Z" />
+      </svg>
+      <span class="camera-rec-dot"></span>
+    </div>
+    <span class="custom-cursor-text">WHO</span>
+  `;
+
   const textLabel = ring.querySelector(".custom-cursor-text") as HTMLElement;
 
-  // Initialize mouse coordinates
-  let posX = -100;
-  let posY = -100;
+  // Use GSAP set for exact centered transforms (-50%, -50%)
+  if (typeof gsap !== "undefined") {
+    gsap.set([dot, ring], {
+      xPercent: -50,
+      yPercent: -50,
+      transformOrigin: "center center",
+      autoAlpha: 0
+    });
+  } else {
+    dot.style.opacity = "0";
+    ring.style.opacity = "0";
+    dot.style.visibility = "hidden";
+    ring.style.visibility = "hidden";
+  }
+
+  let isFirstMove = true;
+  let isVisible = false;
+
+  const showCursor = () => {
+    if (!isVisible) {
+      isVisible = true;
+      if (typeof gsap !== "undefined") {
+        gsap.to([dot, ring], { autoAlpha: 1, duration: 0.2, overwrite: "auto" });
+      } else {
+        dot.style.opacity = "1";
+        ring.style.opacity = "1";
+        dot.style.visibility = "visible";
+        ring.style.visibility = "visible";
+      }
+    }
+  };
+
+  const hideCursor = () => {
+    if (isVisible) {
+      isVisible = false;
+      document.body.classList.remove("cursor-hovering", "cursor-viewing");
+      if (typeof gsap !== "undefined") {
+        gsap.to([dot, ring], { autoAlpha: 0, duration: 0.2, overwrite: "auto" });
+      } else {
+        dot.style.opacity = "0";
+        ring.style.opacity = "0";
+        dot.style.visibility = "hidden";
+        ring.style.visibility = "hidden";
+      }
+    }
+  };
 
   const onMouseMove = (e: MouseEvent) => {
-    posX = e.clientX;
-    posY = e.clientY;
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
 
-    // Red dot on exact mouse pointer coordinates
-    dot.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-    // Camera ring attached tightly adjacent to the cursor (+18px offset) so it never gets covered or distant
-    ring.style.transform = `translate3d(${posX + 18}px, ${posY + 18}px, 0) translate(-50%, -50%)`;
+    if (typeof gsap !== "undefined") {
+      if (isFirstMove) {
+        gsap.set([dot, ring], { x: mouseX, y: mouseY });
+        isFirstMove = false;
+      } else {
+        gsap.to(dot, { x: mouseX, y: mouseY, duration: 0, ease: "none", overwrite: "auto" });
+        gsap.to(ring, { x: mouseX, y: mouseY, duration: 0.12, ease: "power2.out", overwrite: "auto" });
+      }
+    } else {
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      ring.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    }
 
-    // Ensure cursor elements are visible on mouse movement
-    dot.style.opacity = "1";
-    ring.style.opacity = "1";
+    showCursor();
   };
 
   window.addEventListener("mousemove", onMouseMove, { passive: true });
 
   // Handle cursor visibility relative to viewport boundaries
-  document.addEventListener("mouseleave", () => {
-    dot.style.opacity = "0";
-    ring.style.opacity = "0";
+  document.addEventListener("mouseleave", hideCursor);
+  document.addEventListener("mouseenter", showCursor);
+
+  window.addEventListener("mouseout", (e: MouseEvent) => {
+    if (!e.relatedTarget && !(e as any).toElement) {
+      hideCursor();
+    }
   });
 
-  document.addEventListener("mouseenter", () => {
-    dot.style.opacity = "1";
-    ring.style.opacity = "1";
-  });
-
-  // Tactile click shockwave + sparks particle system
+  // Tactile click shockwave
   const triggerClickFX = (x: number, y: number) => {
     if (typeof gsap === "undefined") return;
 
@@ -283,59 +342,26 @@ function initCustomCursor() {
     });
 
     gsap.to(ripple, {
-      scale: 2.4,
+      scale: 2.2,
       opacity: 0,
-      duration: 0.65,
+      duration: 0.5,
       ease: "power2.out",
       onComplete: () => ripple.remove(),
     });
-
-    // 2. High-end kinetic spark particles (6 radial lines)
-    const particleCount = 6;
-    for (let i = 0; i < particleCount; i++) {
-      const spark = document.createElement("div");
-      spark.className = "custom-cursor-particle";
-      document.body.appendChild(spark);
-
-      const angle = (i / particleCount) * Math.PI * 2;
-      const velocity = 35 + Math.random() * 25; // Radial push distance
-      const targetX = x + Math.cos(angle) * velocity;
-      const targetY = y + Math.sin(angle) * velocity;
-
-      gsap.set(spark, {
-        x: x,
-        y: y,
-        scale: Math.random() * 0.6 + 0.6,
-        opacity: 1,
-        xPercent: -50,
-        yPercent: -50
-      });
-
-      gsap.to(spark, {
-        x: targetX,
-        y: targetY,
-        opacity: 0,
-        scale: 0.1,
-        duration: 0.5 + Math.random() * 0.2,
-        ease: "power4.out",
-        onComplete: () => spark.remove(),
-      });
-    }
   };
 
-  // Inertial click feedback (shrinking effect) & Spark triggers
   const onMouseDown = (e: MouseEvent) => {
     if (typeof gsap !== "undefined") {
-      gsap.to(dot, { scale: 0.35, duration: 0.12, ease: "power2.out" });
-      gsap.to(ring, { scale: 0.82, duration: 0.12, ease: "power2.out" });
+      gsap.to(dot, { scale: 0.4, duration: 0.1, ease: "power2.out" });
+      gsap.to(ring, { scale: 0.85, duration: 0.1, ease: "power2.out" });
     }
     triggerClickFX(e.clientX, e.clientY);
   };
 
   const onMouseUp = () => {
     if (typeof gsap !== "undefined") {
-      gsap.to(dot, { scale: 1, duration: 0.15, ease: "power2.out" });
-      gsap.to(ring, { scale: 1, duration: 0.15, ease: "power2.out" });
+      gsap.to(dot, { scale: 1, duration: 0.12, ease: "power2.out" });
+      gsap.to(ring, { scale: 1, duration: 0.12, ease: "power2.out" });
     }
   };
 
@@ -1169,6 +1195,95 @@ function initFlipCards() {
     });
   });
 }
+
+/**
+ * AI Cybernetic Text Decode Animation (Typography)
+ * Rapidly scrambles section headlines through random cyber symbols before resolving cleanly into Korean text.
+ */
+function initAiTextDecodeAnimation() {
+  // Target major section h2 headlines and any elements with .ai-decode-text
+  const headlines = document.querySelectorAll<HTMLElement>("section h2, .ai-decode-text");
+  if (!headlines.length) return;
+
+  const symbols = "01X#*$%&@!?/<>[]{}=";
+
+  const scrambleElement = (el: HTMLElement) => {
+    if (el.dataset.scrambling === "true") return;
+    el.dataset.scrambling = "true";
+
+    // Collect all text nodes inside element to scramble text while preserving HTML tags (e.g. <span class="text-blue-600">)
+    const textNodes: { node: Text; originalText: string }[] = [];
+
+    const findTextNodes = (node: Node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const txt = node.nodeValue || "";
+        if (txt.trim().length > 0) {
+          textNodes.push({ node: node as Text, originalText: txt });
+        }
+      } else {
+        node.childNodes.forEach((child) => findTextNodes(child));
+      }
+    };
+
+    findTextNodes(el);
+    if (!textNodes.length) {
+      el.dataset.scrambling = "false";
+      return;
+    }
+
+    const duration = 500; // 0.5s total scramble
+    const frames = 18;
+    const intervalMs = duration / frames;
+    let currentFrame = 0;
+
+    const timer = setInterval(() => {
+      currentFrame++;
+      const progress = currentFrame / frames;
+
+      textNodes.forEach(({ node, originalText }) => {
+        const len = originalText.length;
+        const revealedCount = Math.floor(progress * len);
+
+        const scrambled = originalText
+          .split("")
+          .map((char, idx) => {
+            // Keep spaces, tabs, and newlines unchanged
+            if (char === " " || char === "\n" || char === "\r" || char === "\t") return char;
+            if (idx < revealedCount) return char;
+            return symbols[Math.floor(Math.random() * symbols.length)];
+          })
+          .join("");
+
+        node.nodeValue = scrambled;
+      });
+
+      if (currentFrame >= frames) {
+        clearInterval(timer);
+        // Restore all original text nodes
+        textNodes.forEach(({ node, originalText }) => {
+          node.nodeValue = originalText;
+        });
+        el.dataset.scrambling = "false";
+      }
+    }, intervalMs);
+  };
+
+  // IntersectionObserver to trigger when section headline scrolls into view
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrambleElement(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  headlines.forEach((el) => observer.observe(el));
+}
+
 
 
 
