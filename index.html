@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>(주)후미디어 B2B 통합 비즈니스 허브</title>
-    <!-- Link Tailwind and Custom styles -->
+    <!-- Link Tailwind, FontAwesome, and Custom styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
@@ -95,66 +96,31 @@
       
       <!-- Section 1: Hero (Immersive Cinematic Dark Video Background) -->
       <section id="section-hero" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-[#090d16]">
-        <!-- Immersive Cinematic High-Tech Corporate Video Background (Broadcasting Studio & Control Room) -->
-        <div class="video-background-container select-none">
-          <!-- Neon Blue & Innovation Purple Ambient Studio Accents -->
-          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
-          <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
-
-          <!-- Direct 4K/1080p Studio Control Room Video Loop -->
-          <video 
-            id="hero-bg-video-element"
-            class="video-background-video absolute inset-0 w-full h-full object-cover z-0"
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            poster="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&q=80"
-            style="filter: brightness(0.68) contrast(1.15) saturate(1.1); transform: translate(-50%, -50%) scale(1.05) translateZ(0); -webkit-transform: translate(-50%, -50%) scale(1.05) translateZ(0); will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; image-rendering: -webkit-optimize-contrast;"
-          >
-            <source src="https://cdn.coverr.co/videos/coverr-server-room-with-blue-lights-2646/1080p.mp4" type="video/mp4" />
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-server-room-with-blue-lights-42861-large.mp4" type="video/mp4" />
-          </video>
-
-          <iframe 
-            id="hero-bg-video"
-            class="video-background-iframe z-0"
-            src="https://www.youtube.com/embed/PAvJORGcUTU?autoplay=1&mute=1&loop=1&playlist=PAvJORGcUTU&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0&autohide=1&playsinline=1&enablejsapi=1"
-            title="방송 프로덕션 스튜디오 컨트롤 룸 - (주)후미디어"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            style="filter: brightness(0.68) contrast(1.15) saturate(1.1); opacity: 0.85; transform: translate(-50%, -50%) scale(1.05) translateZ(0); -webkit-transform: translate(-50%, -50%) scale(1.05) translateZ(0); will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
-            allowfullscreen>
-          </iframe>
-
-          <!-- Anti-Banding Noise Grain Overlay (Masks compression artifacts for a crisp, high-res visual feel) -->
-          <div class="absolute inset-0 z-2 pointer-events-none opacity-5 bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20200%20200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noiseFilter%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.8%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noiseFilter)%22%2F%3E%3C%2Fsvg%3E')]"></div>
+        <!-- Immersive Cinematic High-Tech Corporate Video Background (YouTube Embed) -->
+        <div class="youtube-bg-wrapper">
+          <iframe src="https://www.youtube.com/embed/DIdduzeub5U?autoplay=1&mute=1&controls=0&loop=1&playlist=DIdduzeub5U&playsinline=1&modestbranding=1&rel=0&vq=hd1080" title="Hero Background Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+
+        <!-- Neon Blue & Innovation Purple Ambient Studio Accents -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[120px] pointer-events-none z-1"></div>
+
+        <!-- Anti-Banding Noise Grain Overlay (Masks compression artifacts for a crisp, high-res visual feel) -->
+        <div class="absolute inset-0 z-2 pointer-events-none opacity-5 bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20200%20200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noiseFilter%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.8%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noiseFilter)%22%2F%3E%3C%2Fsvg%3E')]"></div>
         
-        <!-- Premium Dark Vignette & Gradient Overlays for High-Contrast Readability -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#090d16]/80 via-[#090d16]/40 to-[#090d16] z-10 pointer-events-none"></div>
+        <!-- Premium Dark Vignette & Navy Gradient Overlays for High-Contrast Readability -->
+        <div class="absolute inset-0 bg-[#080c14]/60 bg-gradient-to-b from-[#090d16]/80 via-[#090d16]/40 to-[#090d16] z-10 pointer-events-none"></div>
 
         <!-- Hero Content Overlay (Center-Left on Desktop, Optical High Center on Mobile) -->
         <div class="hero-content-wrapper relative z-20 w-full max-w-7xl my-auto">
           <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <!-- Left Side: Sleek title and branding description -->
             <div class="hero-text-container flex flex-col max-w-2xl">
-              <!-- Premium Eyebrow -->
-              <div class="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/80 backdrop-blur-md shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
-                <span class="text-[10px] md:text-xs font-bold tracking-widest text-blue-300 uppercase">Corporate Solution</span>
-              </div>
-              
-              <!-- Bold Heading in Dark Theme (Fluid Typography H1) -->
-              <h1 class="typo-h1 text-white mb-4 break-keep">
-                성장을 설계하고 가치를 실현하는<br class="hidden sm:block" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">프리미엄 미디어 솔루션 파트너</span>
+              <h1 class="hero-title">
+                <span class="highlight-blue">프리미엄 영상 제작</span>부터<br>
+                <span class="highlight-gradient">교육·마케팅 컨설팅</span>까지
               </h1>
-              
-              <!-- Professional Sub-copy -->
-              <p class="typo-body1 text-slate-300 leading-relaxed font-medium break-keep">
-                단순한 콘텐츠 제작을 넘어, 조직의 목표와 성장을 이어주는 검증된 올인원 미디어 솔루션을 제공합니다.
-              </p>
+              <p class="hero-description">검증된 영상 연출력과 탄탄한 온라인 교육 기획력을 결합하여,<br>귀사의 브랜드 가치를 극대화하는 가장 완벽한 미디어 전략을 제시합니다.</p>
             </div>
             
             <!-- Right Side: Vertical Luxury Scroll Indicator (Dark Mode) -->
@@ -172,35 +138,14 @@
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Flowing Water Marquee in Dark Aesthetic (Fixed at Bottom) -->
-        <div class="absolute bottom-0 left-0 right-0 z-20 w-full overflow-hidden border-t border-b border-slate-800/80 py-3.5 bg-slate-950/85 backdrop-blur-md">
-          <div class="water-flow-container flex w-[200%]">
-            <div class="water-flow-text flex gap-12 text-[10px] md:text-xs font-extrabold tracking-widest uppercase text-slate-300">
-              <span>INQUIRY & DESIGN</span>
-              <span class="text-blue-400">★</span>
-              <span>SYSTEM INTEGRATION</span>
-              <span class="text-blue-400">★</span>
-              <span>TANGIBLE VALUE CREATION</span>
-              <span class="text-blue-400">★</span>
-              <span>CUSTOM STUDY ENGINE</span>
-              <span class="text-blue-400">★</span>
-              <span>GLOBAL CONTENT STREAM</span>
-              <span class="text-blue-400">★</span>
-              
-              <!-- Duplicate for seamless loop -->
-              <span>INQUIRY & DESIGN</span>
-              <span class="text-blue-400">★</span>
-              <span>SYSTEM INTEGRATION</span>
-              <span class="text-blue-400">★</span>
-              <span>TANGIBLE VALUE CREATION</span>
-              <span class="text-blue-400">★</span>
-              <span>CUSTOM STUDY ENGINE</span>
-              <span class="text-blue-400">★</span>
-              <span>GLOBAL CONTENT STREAM</span>
-              <span class="text-blue-400">★</span>
-            </div>
-          </div>
+      <!-- High-Impact Conversion Banner -->
+      <section class="impact-cta-banner">
+        <div class="cta-content">
+          <h2 class="cta-story-text">평범한 영상은 기억에 남지 않고,<br>전략 없는 교육은 성과를 내지 못합니다.</h2>
+          <h3 class="cta-highlight-text">압도적인 비주얼과 치밀한 기획으로<br>귀사만의 <span>성공 스토리</span>를 완성합니다.</h3>
+          <a href="#contact" class="magnetic-btn clickable">프로젝트 무료 컨설팅 받기 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </section>
 
