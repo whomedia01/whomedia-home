@@ -1025,6 +1025,34 @@ function initAboutSlider() {
     }
   });
 
+  // Mobile Touch Swipe Gesture Handler (Non-blocking passive scroll)
+  let touchStartX = 0;
+  let touchStartY = 0;
+  showcase.addEventListener("touchstart", (e: TouchEvent) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  showcase.addEventListener("touchend", (e: TouchEvent) => {
+    if (e.changedTouches.length === 1) {
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) {
+          const nextIdx = (currentIdx + 1) % ABOUT_PILLARS.length;
+          updateShowcase(nextIdx);
+          startAutoCycle();
+        } else {
+          const prevIdx = (currentIdx - 1 + ABOUT_PILLARS.length) % ABOUT_PILLARS.length;
+          updateShowcase(prevIdx);
+          startAutoCycle();
+        }
+      }
+    }
+  }, { passive: true });
+
   const updateShowcase = (index: number) => {
     currentIdx = index;
     const data = ABOUT_PILLARS[index];

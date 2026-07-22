@@ -131,31 +131,31 @@
         <!-- Premium Dark Vignette & Gradient Overlays for High-Contrast Readability -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#090d16]/80 via-[#090d16]/40 to-[#090d16] z-10 pointer-events-none"></div>
 
-        <!-- Hero Content Overlay (Positioned at the bottom with dark gradient) -->
-        <div class="absolute bottom-0 left-0 right-0 z-20 w-full pb-10 md:pb-14 pt-32 bg-gradient-to-t from-[#090d16] via-[#090d16]/95 to-transparent">
-          <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-6">
+        <!-- Hero Content Overlay (Center-Left on Desktop, Optical High Center on Mobile) -->
+        <div class="hero-content-wrapper relative z-20 w-full max-w-7xl my-auto">
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <!-- Left Side: Sleek title and branding description -->
-            <div class="flex flex-col items-start text-left max-w-2xl">
+            <div class="hero-text-container flex flex-col max-w-2xl">
               <!-- Premium Eyebrow -->
               <div class="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/80 backdrop-blur-md shadow-xs">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
                 <span class="text-[10px] md:text-xs font-bold tracking-widest text-blue-300 uppercase">Corporate Solution</span>
               </div>
               
-              <!-- Bold Bottom Heading in Dark Theme -->
-              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-snug sm:leading-tight text-white mb-4 break-keep text-balance">
+              <!-- Bold Heading in Dark Theme (Fluid Typography H1) -->
+              <h1 class="typo-h1 text-white mb-4 break-keep">
                 성장을 설계하고 가치를 실현하는<br class="hidden sm:block" />
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">프리미엄 미디어 솔루션 파트너</span>
               </h1>
               
               <!-- Professional Sub-copy -->
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium break-keep text-pretty">
+              <p class="typo-body1 text-slate-300 leading-relaxed font-medium break-keep">
                 단순한 콘텐츠 제작을 넘어, 조직의 목표와 성장을 이어주는 검증된 올인원 미디어 솔루션을 제공합니다.
               </p>
             </div>
             
             <!-- Right Side: Vertical Luxury Scroll Indicator (Dark Mode) -->
-            <div class="hidden md:flex flex-col items-end gap-2 select-none shrink-0 z-20">
+            <div class="hidden md:flex flex-col items-end gap-2 select-none shrink-0 z-20 mb-2">
               <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase opacity-90 flex items-center gap-1">
                 SCROLL
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -168,34 +168,34 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Flowing Water Marquee in Dark Aesthetic -->
-          <div class="w-full overflow-hidden border-t border-b border-slate-800/80 py-3.5 bg-slate-950/85 backdrop-blur-md relative">
-            <div class="water-flow-container flex w-[200%]">
-              <div class="water-flow-text flex gap-12 text-[10px] md:text-xs font-extrabold tracking-widest uppercase text-slate-300">
-                <span>INQUIRY & DESIGN</span>
-                <span class="text-blue-400">★</span>
-                <span>SYSTEM INTEGRATION</span>
-                <span class="text-blue-400">★</span>
-                <span>TANGIBLE VALUE CREATION</span>
-                <span class="text-blue-400">★</span>
-                <span>CUSTOM STUDY ENGINE</span>
-                <span class="text-blue-400">★</span>
-                <span>GLOBAL CONTENT STREAM</span>
-                <span class="text-blue-400">★</span>
-                
-                <!-- Duplicate for seamless loop -->
-                <span>INQUIRY & DESIGN</span>
-                <span class="text-blue-400">★</span>
-                <span>SYSTEM INTEGRATION</span>
-                <span class="text-blue-400">★</span>
-                <span>TANGIBLE VALUE CREATION</span>
-                <span class="text-blue-400">★</span>
-                <span>CUSTOM STUDY ENGINE</span>
-                <span class="text-blue-400">★</span>
-                <span>GLOBAL CONTENT STREAM</span>
-                <span class="text-blue-400">★</span>
-              </div>
+        <!-- Flowing Water Marquee in Dark Aesthetic (Fixed at Bottom) -->
+        <div class="absolute bottom-0 left-0 right-0 z-20 w-full overflow-hidden border-t border-b border-slate-800/80 py-3.5 bg-slate-950/85 backdrop-blur-md">
+          <div class="water-flow-container flex w-[200%]">
+            <div class="water-flow-text flex gap-12 text-[10px] md:text-xs font-extrabold tracking-widest uppercase text-slate-300">
+              <span>INQUIRY & DESIGN</span>
+              <span class="text-blue-400">★</span>
+              <span>SYSTEM INTEGRATION</span>
+              <span class="text-blue-400">★</span>
+              <span>TANGIBLE VALUE CREATION</span>
+              <span class="text-blue-400">★</span>
+              <span>CUSTOM STUDY ENGINE</span>
+              <span class="text-blue-400">★</span>
+              <span>GLOBAL CONTENT STREAM</span>
+              <span class="text-blue-400">★</span>
+              
+              <!-- Duplicate for seamless loop -->
+              <span>INQUIRY & DESIGN</span>
+              <span class="text-blue-400">★</span>
+              <span>SYSTEM INTEGRATION</span>
+              <span class="text-blue-400">★</span>
+              <span>TANGIBLE VALUE CREATION</span>
+              <span class="text-blue-400">★</span>
+              <span>CUSTOM STUDY ENGINE</span>
+              <span class="text-blue-400">★</span>
+              <span>GLOBAL CONTENT STREAM</span>
+              <span class="text-blue-400">★</span>
             </div>
           </div>
         </div>

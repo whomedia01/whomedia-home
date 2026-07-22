@@ -864,6 +864,132 @@ html.dark #video-modal .bg-white {
   }
 }
 
+/* ==========================================================================
+   Hero Section Layout Optimization (Center-Left Desktop, Optical High Center Mobile)
+   ========================================================================== */
+
+#section-hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+#section-hero .hero-content-wrapper {
+  width: 100%;
+}
+
+#section-hero .hero-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  #section-hero {
+    min-height: 100dvh;
+    justify-content: flex-start !important;
+    padding-top: 30dvh !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    align-items: center !important;
+  }
+
+  #section-hero .hero-text-container {
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+
+/* ==========================================================================
+   Mobile Touch Drag & Swipe Optimization (60fps Native CSS Scroll Snap)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  /* Portfolio Grid -> Mobile Touch Horizontal Scroll Container */
+  #portfolio-video-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 1rem !important;
+    scroll-padding-left: 1rem;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  #portfolio-video-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #portfolio-video-grid .portfolio-card {
+    width: 85vw !important;
+    max-width: 320px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: center !important;
+  }
+
+  /* Hub Flip Cards -> Mobile Touch Horizontal Scroll Container */
+  #hub-cards-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 1rem !important;
+    scroll-padding-left: 1rem;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  #hub-cards-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #hub-cards-grid .flip-card-container {
+    width: 85vw !important;
+    max-width: 340px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: center !important;
+  }
+
+  /* Work Process Steps -> Touch Horizontal Scroll Container */
+  .process-steps-scroll {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .process-steps-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .process-steps-scroll > button {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+
 
 
 
