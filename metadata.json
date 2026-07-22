@@ -1,6 +1,6 @@
 {
-  "name": "WhoMedia",
-  "description": "WhoMedia application platform",
+  "name": "후미디어 B2B 통합 비즈니스 허브",
+  "description": "(주)후미디어 B2B 통합 비즈니스 허브 웹사이트 - 프리미엄 영상 제작, 평생교육, 언론기관 융합 솔루션 그룹",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

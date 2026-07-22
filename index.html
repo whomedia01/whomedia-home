@@ -1,13 +1,1033 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>(주)후미디어 B2B 통합 비즈니스 허브</title>
+    <!-- Link Tailwind and Custom styles -->
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
+    
+    <!-- Floating Navigation Header -->
+    <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 px-6 md:px-12 flex justify-between items-center bg-transparent">
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="clickable flex items-center select-none group/logo" aria-label="WHOMEDIA">
+          <div class="relative flex items-center logo-premium-wrap select-none">
+            <span class="logo-text-who">WHO</span><span class="logo-text-media">MEDIA</span>
+            
+            <!-- Prism Light Beam flare -->
+            <div class="logo-flare-beam"></div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation links -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+        <a href="#hero" data-index="0" class="desktop-nav-link clickable text-sm tracking-wide text-blue-600 font-bold transition-colors duration-300">HOME</a>
+        <a href="#about" data-index="1" class="desktop-nav-link clickable text-sm tracking-wide text-slate-600 transition-colors duration-300">ABOUT</a>
+        <a href="#process" data-index="2" class="desktop-nav-link clickable text-sm tracking-wide text-slate-600 transition-colors duration-300">PROCESS</a>
+        <a href="#portfolio" data-index="3" class="desktop-nav-link clickable text-sm tracking-wide text-slate-600 transition-colors duration-300">PORTFOLIO</a>
+        <a href="#hub" data-index="4" class="desktop-nav-link clickable text-sm tracking-wide text-slate-600 transition-colors duration-300">MEDIA HUB</a>
+        <a href="#contact" data-index="5" class="desktop-nav-link clickable text-sm tracking-wide text-slate-600 transition-colors duration-300">CONTACT</a>
+      </nav>
+
+      <!-- Desktop Action CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="clickable inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold tracking-widest text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-[0_4px_14px_rgba(37,99,235,0.25)]">
+          PROJECT INQUIRY
+        </a>
+      </div>
+
+      <!-- Mobile Right Controls (Menu Button) -->
+      <div class="flex md:hidden items-center gap-2">
+        <button id="mobile-menu-toggle" class="clickable p-2 text-slate-800 hover:text-blue-600 transition-colors focus:outline-none" aria-label="메뉴 열기">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/98 z-40 flex flex-col justify-center items-center gap-8 -translate-y-full pointer-events-none transition-transform duration-500 border-b border-slate-200">
+      <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-slate-800 hover:text-blue-600 transition-colors focus:outline-none" aria-label="메뉴 닫기">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <nav class="flex flex-col items-center gap-6 text-center">
+        <a href="#hero" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">HOME</a>
+        <a href="#about" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">ABOUT</a>
+        <a href="#process" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">PROCESS</a>
+        <a href="#portfolio" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">PORTFOLIO</a>
+        <a href="#hub" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">MEDIA HUB</a>
+        <a href="#contact" class="mobile-nav-link text-xl font-bold tracking-widest text-slate-800 hover:text-blue-600 transition-colors">CONTACT</a>
+      </nav>
+      <a href="#contact" class="mobile-nav-link inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-bold tracking-wider text-white bg-blue-600 hover:bg-blue-700 transition-all mt-4 shadow-md">
+        프로젝트 상담 신청
+      </a>
+    </div>
+
+    <!-- Floating Navigation Dots on PC (Indicator & Navigation helper) -->
+    <div class="fixed right-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-4 z-45">
+      <button data-index="0" class="pagination-dot clickable w-3 h-3 rounded-full bg-blue-600 scale-125 transition-all duration-300" aria-label="Home"></button>
+      <button data-index="1" class="pagination-dot clickable w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" aria-label="About"></button>
+      <button data-index="2" class="pagination-dot clickable w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" aria-label="Process"></button>
+      <button data-index="3" class="pagination-dot clickable w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" aria-label="Portfolio"></button>
+      <button data-index="4" class="pagination-dot clickable w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" aria-label="Media Hub"></button>
+      <button data-index="5" class="pagination-dot clickable w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" aria-label="Contact"></button>
+    </div>
+
+    <!-- MAIN WRAPPER: Vertical Premium Flow -->
+    <main id="main-wrapper" class="w-full flex flex-col bg-[#f8fafc]">
+      
+      <!-- Section 1: Hero (Immersive Cinematic Dark Video Background) -->
+      <section id="section-hero" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-[#090d16]">
+        <!-- Immersive Cinematic High-Tech Corporate Video Background -->
+        <div class="video-background-container select-none">
+          <iframe 
+            id="hero-bg-video"
+            class="video-background-iframe"
+            src="https://www.youtube.com/embed/PAvJORGcUTU?autoplay=1&mute=1&loop=1&playlist=PAvJORGcUTU&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0&autohide=1&playsinline=1&enablejsapi=1"
+            title="에듀팡 일본어 인트로 - (주)후미디어"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            style="filter: brightness(0.68) contrast(1.15) saturate(1.1);"
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        <!-- Premium Dark Vignette & Gradient Overlays for High-Contrast Readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#090d16]/80 via-[#090d16]/40 to-[#090d16] z-10 pointer-events-none"></div>
+
+        <!-- Hero Content Overlay (Positioned at the bottom with dark gradient) -->
+        <div class="absolute bottom-0 left-0 right-0 z-20 w-full pb-10 md:pb-14 pt-32 bg-gradient-to-t from-[#090d16] via-[#090d16]/95 to-transparent">
+          <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-6">
+            <!-- Left Side: Sleek title and branding description -->
+            <div class="flex flex-col items-start text-left max-w-2xl">
+              <!-- Premium Eyebrow -->
+              <div class="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/80 backdrop-blur-md shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
+                <span class="text-[10px] md:text-xs font-bold tracking-widest text-blue-300 uppercase">Corporate Solution</span>
+              </div>
+              
+              <!-- Bold Bottom Heading in Dark Theme -->
+              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-snug sm:leading-tight text-white mb-4 break-keep text-balance">
+                성장을 설계하고 가치를 실현하는<br class="hidden sm:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">프리미엄 미디어 솔루션 파트너</span>
+              </h1>
+              
+              <!-- Professional Sub-copy -->
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium break-keep text-pretty">
+                단순한 콘텐츠 제작을 넘어, 조직의 목표와 성장을 이어주는 검증된 올인원 미디어 솔루션을 제공합니다.
+              </p>
+            </div>
+            
+            <!-- Right Side: Vertical Luxury Scroll Indicator (Dark Mode) -->
+            <div class="hidden md:flex flex-col items-end gap-2 select-none shrink-0 z-20">
+              <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase opacity-90 flex items-center gap-1">
+                SCROLL
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </span>
+              <div class="w-7 h-12 border-2 border-slate-700/80 rounded-full flex justify-center pt-2 bg-slate-900/90 backdrop-blur-md shadow-md hover:border-blue-500 transition-colors">
+                <!-- Animated Vertical Pill Wheel Dot -->
+                <div class="w-1.5 h-3 bg-gradient-to-b from-blue-400 to-indigo-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.9)] animate-scroll-wheel"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flowing Water Marquee in Dark Aesthetic -->
+          <div class="w-full overflow-hidden border-t border-b border-slate-800/80 py-3.5 bg-slate-950/85 backdrop-blur-md relative">
+            <div class="water-flow-container flex w-[200%]">
+              <div class="water-flow-text flex gap-12 text-[10px] md:text-xs font-extrabold tracking-widest uppercase text-slate-300">
+                <span>INQUIRY & DESIGN</span>
+                <span class="text-blue-400">★</span>
+                <span>SYSTEM INTEGRATION</span>
+                <span class="text-blue-400">★</span>
+                <span>TANGIBLE VALUE CREATION</span>
+                <span class="text-blue-400">★</span>
+                <span>CUSTOM STUDY ENGINE</span>
+                <span class="text-blue-400">★</span>
+                <span>GLOBAL CONTENT STREAM</span>
+                <span class="text-blue-400">★</span>
+                
+                <!-- Duplicate for seamless loop -->
+                <span>INQUIRY & DESIGN</span>
+                <span class="text-blue-400">★</span>
+                <span>SYSTEM INTEGRATION</span>
+                <span class="text-blue-400">★</span>
+                <span>TANGIBLE VALUE CREATION</span>
+                <span class="text-blue-400">★</span>
+                <span>CUSTOM STUDY ENGINE</span>
+                <span class="text-blue-400">★</span>
+                <span>GLOBAL CONTENT STREAM</span>
+                <span class="text-blue-400">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: About Us (Philosophy) -->
+      <section id="section-about" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-white py-24 md:py-32 px-6 md:px-20 lg:px-32">
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Big Brand Statement -->
+          <div class="lg:col-span-5 flex flex-col gap-4" id="about-left-col">
+            <div id="about-left-number" class="font-display text-7xl md:text-8xl font-black text-slate-200 tracking-wider leading-none select-none">01</div>
+            <div id="about-left-eyebrow" class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">WHO WE ARE</div>
+            <h2 id="about-left-title" class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-snug tracking-tight break-keep text-balance">
+              디지털 통합<br class="hidden sm:block" />
+              <span class="text-blue-600">미디어 비즈니스 허브</span>
+            </h2>
+            <div class="h-1 w-12 bg-blue-600 mt-2"></div>
+            <p id="about-left-desc" class="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed mt-4 font-medium break-keep text-pretty">
+              (주)후미디어는 전문 스튜디오 인프라, 온·오프라인 평생교육원(후캠퍼스), 인터넷 언론 미디어를 유기적으로 결합하여 기업의 지속 가능한 성장과 가치 실현을 이끄는 디지털 통합 미디어 비즈니스 허브입니다.
+            </p>
+          </div>
+
+          <!-- Right Column: Premium Dynamic Showcase Slider -->
+          <div class="lg:col-span-7 flex flex-col gap-6" id="about-slider-container">
+            <!-- Active Showcase Card with Cinematic Interactive Studio Focus -->
+            <div id="about-showcase" class="glass p-8 md:p-10 rounded-3xl min-h-[280px] md:min-h-[300px] flex flex-col justify-between relative overflow-hidden transition-all duration-300 border border-slate-200/80 shadow-2xl bg-white group cursor-default">
+              
+              <!-- Interactive Spotlight & Lens Refraction Sweep -->
+              <div id="about-lens-spotlight" class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37, 99, 235, 0.08), transparent 50%);"></div>
+
+              <!-- Viewfinder Frame Corner HUD Crop Marks -->
+              <div class="absolute top-4 left-4 w-3.5 h-3.5 border-t-2 border-l-2 border-blue-500/40 pointer-events-none"></div>
+              <div class="absolute top-4 right-4 w-3.5 h-3.5 border-t-2 border-r-2 border-blue-500/40 pointer-events-none"></div>
+              <div class="absolute bottom-4 left-4 w-3.5 h-3.5 border-b-2 border-l-2 border-blue-500/40 pointer-events-none"></div>
+              <div class="absolute bottom-4 right-4 w-3.5 h-3.5 border-b-2 border-r-2 border-blue-500/40 pointer-events-none"></div>
+
+              <!-- Ambient background glowing accent -->
+              <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+              
+              <!-- Viewfinder Header HUD Bar -->
+              <div class="flex items-center justify-between relative z-20 mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider text-red-600 bg-red-50 border border-red-200">
+                    <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                    <span>PROD REC</span>
+                  </span>
+                  <span class="text-[10px] font-mono text-slate-400 font-semibold tracking-wider uppercase hidden sm:inline-block">4K HDR • 60FPS</span>
+                </div>
+                <span id="showcase-badge" class="text-[10px] md:text-xs font-bold tracking-widest text-blue-700 uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-200">PILLAR 01 / BUSINESS HUB</span>
+              </div>
+
+              <div id="about-showcase-content" class="flex flex-col gap-4 relative z-10">
+                <!-- Title Row -->
+                <div class="flex items-start justify-between">
+                  <h3 id="showcase-title" class="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mt-1">통합 미디어 비전 (Vision)</h3>
+                  <span id="showcase-number" class="font-display text-4xl md:text-5xl font-black text-slate-200 select-none shrink-0 ml-4">01</span>
+                </div>
+
+                <p id="showcase-desc" class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                  미디어 콘텐츠, 온·오프라인 맞춤 교육, 언론 네트워크를 유기적으로 융합한 최적의 비즈니스 허브입니다.
+                </p>
+                
+                <!-- Detailed Bullet points -->
+                <ul id="showcase-bullets" class="flex flex-col gap-2.5 mt-1">
+                  <li class="flex gap-3 text-xs md:text-sm text-slate-600">
+                    <svg class="h-4 w-4 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>기업 및 공공기관 맞춤형 디지털 미디어 비즈니스 솔루션 구축</span>
+                  </li>
+                  <li class="flex gap-3 text-xs md:text-sm text-slate-600">
+                    <svg class="h-4 w-4 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>브랜드 가치 극대화 및 멀티 플랫폼 융복합 사업 연계</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Shutter Flash Line -->
+              <div id="shutter-flash-line" class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 pointer-events-none z-30"></div>
+            </div>
+            
+            <!-- Tab Buttons Container -->
+            <div class="grid grid-cols-3 gap-3 md:gap-4">
+              <!-- Tab 01 -->
+              <button data-about-tab="0" class="about-tab-btn relative overflow-hidden glass p-4 rounded-2xl flex flex-col items-start gap-1 text-left border border-blue-300 bg-blue-50/60 transition-all duration-300 group clickable">
+                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">01. Vision</span>
+                <span class="text-xs md:text-sm font-extrabold text-slate-900 tracking-tight">통합 미디어 비전</span>
+                <!-- Active Progress Indicator -->
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-600 active-progress-bar w-full origin-left scale-x-0" style="transition: transform 4000ms linear;"></div>
+              </button>
+              
+              <!-- Tab 02 -->
+              <button data-about-tab="1" class="about-tab-btn relative overflow-hidden glass p-4 rounded-2xl flex flex-col items-start gap-1 text-left border border-slate-200 bg-white hover:border-slate-300 transition-all duration-300 group clickable">
+                <span class="text-[10px] font-bold text-slate-400 group-hover:text-blue-600 transition-colors uppercase tracking-widest">02. System</span>
+                <span class="text-xs md:text-sm font-extrabold text-slate-600 group-hover:text-slate-900 transition-colors tracking-tight">체계적 솔루션</span>
+                <!-- Active Progress Indicator -->
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-600 active-progress-bar w-full origin-left scale-x-0" style="transition: transform 4000ms linear;"></div>
+              </button>
+              
+              <!-- Tab 03 -->
+              <button data-about-tab="2" class="about-tab-btn relative overflow-hidden glass p-4 rounded-2xl flex flex-col items-start gap-1 text-left border border-slate-200 bg-white hover:border-slate-300 transition-all duration-300 group clickable">
+                <span class="text-[10px] font-bold text-slate-400 group-hover:text-blue-600 transition-colors uppercase tracking-widest">03. Value</span>
+                <span class="text-xs md:text-sm font-extrabold text-slate-600 group-hover:text-slate-900 transition-colors tracking-tight">실질적 성과</span>
+                <!-- Active Progress Indicator -->
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-600 active-progress-bar w-full origin-left scale-x-0" style="transition: transform 4000ms linear;"></div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 3: Work Process (Timeline UI) -->
+      <section id="section-process" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-[#f8fafc] py-24 md:py-32 px-6 md:px-20 lg:px-32">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+          
+          <div class="mb-10 text-center md:text-left">
+            <span class="text-xs font-bold tracking-widest text-blue-600 uppercase">WORK FLOW</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">논리적이고 체계적인 업무 프로세스</h2>
+          </div>
+
+          <!-- Timeline Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Left: Timeline navigation buttons connected by line -->
+            <div class="lg:col-span-5 flex flex-col relative justify-center">
+              
+              <!-- Timeline vertical line (PC only) -->
+              <div class="absolute left-6 top-6 bottom-6 w-[2px] bg-slate-200 hidden lg:block select-none">
+                <div id="process-timeline-bar" class="w-full bg-blue-600 origin-top h-0 transition-all duration-500"></div>
+              </div>
+
+              <!-- Steps row for Mobile, stacked for Desktop -->
+              <div class="flex flex-row lg:flex-col justify-between lg:justify-start gap-3 lg:gap-8 overflow-x-auto lg:overflow-x-visible no-scrollbar pb-4 lg:pb-0 z-10">
+                
+                <!-- Step Trigger 1 -->
+                <button data-step="1" class="process-step-btn clickable shrink-0 flex items-center gap-4 text-left p-4 rounded-xl glass-active border-blue-500/40 w-[180px] lg:w-full">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-blue-600 text-white font-display font-extrabold text-sm shadow-md">01</div>
+                  <div class="hidden lg:block">
+                    <span class="text-[10px] font-bold text-blue-600 tracking-widest block uppercase">STEP 01</span>
+                    <span class="text-sm font-bold text-slate-900">고객 문의 & 요구사항 분석</span>
+                  </div>
+                </button>
+
+                <!-- Step Trigger 2 -->
+                <button data-step="2" class="process-step-btn clickable shrink-0 flex items-center gap-4 text-left p-4 rounded-xl glass bg-white border-slate-200/80 w-[180px] lg:w-full">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 font-display font-extrabold text-sm">02</div>
+                  <div class="hidden lg:block">
+                    <span class="text-[10px] font-bold text-slate-500 tracking-widest block uppercase">STEP 02</span>
+                    <span class="text-sm font-bold text-slate-900">맞춤형 솔루션 기획</span>
+                  </div>
+                </button>
+
+                <!-- Step Trigger 3 -->
+                <button data-step="3" class="process-step-btn clickable shrink-0 flex items-center gap-4 text-left p-4 rounded-xl glass bg-white border-slate-200/80 w-[180px] lg:w-full">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 font-display font-extrabold text-sm">03</div>
+                  <div class="hidden lg:block">
+                    <span class="text-[10px] font-bold text-slate-500 tracking-widest block uppercase">STEP 03</span>
+                    <span class="text-sm font-bold text-slate-900">프로젝트 제작 & 실행</span>
+                  </div>
+                </button>
+
+                <!-- Step Trigger 4 -->
+                <button data-step="4" class="process-step-btn clickable shrink-0 flex items-center gap-4 text-left p-4 rounded-xl glass bg-white border-slate-200/80 w-[180px] lg:w-full">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 font-display font-extrabold text-sm">04</div>
+                  <div class="hidden lg:block">
+                    <span class="text-[10px] font-bold text-slate-500 tracking-widest block uppercase">STEP 04</span>
+                    <span class="text-sm font-bold text-slate-900">검수·인도 & 사후 지원</span>
+                  </div>
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Right: Timeline detail panels dynamically rendered/shown with GSAP -->
+            <div class="lg:col-span-7">
+              <div class="glass p-8 md:p-10 rounded-3xl min-h-[340px] flex flex-col justify-between relative overflow-hidden bg-white border border-slate-200/80 shadow-xl">
+                <div class="absolute top-0 right-0 p-8 select-none opacity-[0.06] font-display text-[160px] font-black leading-none pointer-events-none text-slate-400" id="process-bg-num">01</div>
+                
+                <div id="process-detail-container">
+                  <!-- Content gets injected or shown dynamically, setting default here -->
+                  <div class="flex items-center gap-3 mb-4 text-blue-600">
+                    <span class="px-2.5 py-1 text-[10px] font-bold tracking-widest rounded bg-blue-50 border border-blue-200 text-blue-700">상담 & 요구 분석</span>
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mb-2" id="process-title">고객 문의 및 요구사항 분석</h3>
+                  <p class="text-sm text-blue-600 font-semibold mb-6" id="process-subtitle">고객의 비즈니스 니즈와 목적을 정밀하게 파악하는 맞춤 1:1 진단</p>
+                  
+                  <ul class="space-y-3.5" id="process-bullets">
+                    <li class="flex gap-3 text-sm text-slate-600">
+                      <svg class="h-5 w-5 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>전문 컨설턴트의 1:1 맞춤 상담 및 비즈니스 환경 정밀 진단</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-600">
+                      <svg class="h-5 w-5 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>프로젝트 목표, 예산, 일정 및 핵심 요구사항 도출</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-600">
+                      <svg class="h-5 w-5 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>공공·기업 환경 및 가이드라인에 맞춘 최적의 추진 방향성 제시</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-200 flex justify-end items-center text-xs text-slate-500">
+                  <span class="font-display font-medium text-slate-400">WHO MEDIA SOLUTIONS</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 4: Portfolio (Cinematic Case Studies & YouTube Channel Showcase) -->
+      <section id="section-portfolio" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-white py-24 md:py-32 px-6 md:px-20 lg:px-32">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+          
+          <!-- Section Header -->
+          <div class="mb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-slate-100 pb-6">
+            <div>
+              <span class="text-xs font-bold tracking-widest text-blue-600 uppercase">PORTFOLIO</span>
+              <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1 tracking-tight">
+                포트폴리오
+              </h2>
+            </div>
+          </div>
+
+          <!-- Portfolio Business Introduction -->
+          <div class="mb-8 p-5 md:p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <p class="text-sm md:text-base font-bold text-slate-900 leading-snug">
+                (주)후미디어가 창출해온 독자적 미디어 솔루션 및 시네마틱 프로젝트 레퍼런스입니다.
+              </p>
+              <p class="text-xs md:text-sm text-slate-600 font-medium leading-relaxed">
+                고품질 브랜딩 영상부터 차세대 평생교육 LMS 콘텐츠, 스튜디오 인프라 구축까지 축적된 제작 인프라와 독보적인 솔루션을 제시합니다.
+              </p>
+            </div>
+            <div class="shrink-0 flex items-center gap-2 text-xs font-bold text-blue-600 bg-blue-50 border border-blue-200/60 px-3.5 py-2 rounded-xl">
+              <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+              <span>주요 레퍼런스 프로젝트</span>
+            </div>
+          </div>
+
+          <!-- Video Grid: Responsive Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" id="portfolio-video-grid">
+            
+            <!-- Video Card 1 (x4Cb5At6Z_M) -->
+            <div data-category="brand" data-video-id="x4Cb5At6Z_M" data-title="CG 인터랙티브 강의" title="CG 인터랙티브 강의" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/x4Cb5At6Z_M/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">대표 홍보</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  CG 인터랙티브 강의
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 2 (WaxhtAZLLV8) -->
+            <div data-category="lms" data-video-id="WaxhtAZLLV8" data-title="크로마키 촬영" title="크로마키 촬영" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/WaxhtAZLLV8/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">평생교육</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  크로마키 촬영
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 3 (rJ2U9T27WwU) -->
+            <div data-category="brand" data-video-id="rJ2U9T27WwU" data-title="태진옥 홍보영상" title="태진옥 홍보영상" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/rJ2U9T27WwU/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-indigo-600 rounded self-start uppercase shadow-xs">영상제작</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  태진옥 홍보영상
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 4 (paYW3d0MRqk) -->
+            <div data-category="studio" data-video-id="paYW3d0MRqk" data-title="EBS 올쏘 인트로" title="EBS 올쏘 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/paYW3d0MRqk/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">스튜디오</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  EBS 올쏘 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 5 (vZI7RkelDRg) -->
+            <div data-category="public" data-video-id="vZI7RkelDRg" data-title="AI DT 영어 교과서 인트로" title="AI DT 영어 교과서 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/vZI7RkelDRg/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">위탁교육</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  AI DT 영어 교과서 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 6 (M2YRU_KE06I) -->
+            <div data-category="brand" data-video-id="M2YRU_KE06I" data-title="에듀템_ ELA AI솔루션" title="에듀템_ ELA AI솔루션" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/M2YRU_KE06I/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">미디어 솔루션</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  에듀템_ ELA AI솔루션
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 7 (4cnYAzIvagw) -->
+            <div data-category="lms" data-video-id="4cnYAzIvagw" data-title="동아출판_선생님이 동아출판 AI 디지털 교과서를 말하다 (인터뷰)" title="동아출판_선생님이 동아출판 AI 디지털 교과서를 말하다 (인터뷰)" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/4cnYAzIvagw/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">평생교육 LMS</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  동아출판_선생님이 동아출판 AI 디지털 교과서를 말하다 (인터뷰)
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 8 (nzSjVbxNrnc) -->
+            <div data-category="studio" data-video-id="nzSjVbxNrnc" data-title="NE능률_나는쌤이다 (나는솔로 패러디)" title="NE능률_나는쌤이다 (나는솔로 패러디)" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/nzSjVbxNrnc/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">자체 스튜디오</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  NE능률_나는쌤이다 (나는솔로 패러디)
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 9 (cF7i6m9apsE) -->
+            <div data-category="brand" data-video-id="cF7i6m9apsE" data-title="EBS 포텐시리즈 인트로" title="EBS 포텐시리즈 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/cF7i6m9apsE/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-blue-600 rounded self-start uppercase shadow-xs">미디어 허브</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  EBS 포텐시리즈 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 10 (PAvJORGcUTU) -->
+            <div data-category="brand" data-video-id="PAvJORGcUTU" data-title="에듀팡 일본어 인트로" title="에듀팡 일본어 인트로" class="portfolio-card clickable relative aspect-[9/12] rounded-2xl overflow-hidden glass group cursor-pointer border border-slate-200 flex flex-col justify-end p-5 shadow-lg hover:shadow-2xl transition-all">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 select-none" style="background-image: url('https://img.youtube.com/vi/PAvJORGcUTU/hqdefault.jpg'); filter: brightness(0.85) contrast(1.05);"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest text-white bg-indigo-600 rounded self-start uppercase shadow-xs">시네마틱</span>
+                <h3 class="text-sm md:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-blue-300 transition-colors">
+                  에듀팡 일본어 인트로
+                </h3>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-300 mt-1 group-hover:text-white transition-colors">
+                  <span>자세히 보기</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA removed per user request -->
+
+        </div>
+      </section>
+
+      <!-- Section 5: Hub & Spoke (External Links Hub) -->
+      <section id="section-hub" class="w-full min-h-screen relative flex items-center justify-center overflow-hidden shrink-0 bg-[#f8fafc] py-24 md:py-32 px-6 md:px-20 lg:px-32">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+          
+          <div class="mb-10 text-center md:text-left">
+            <span class="text-xs font-bold tracking-widest text-blue-600 uppercase">PLATFORMS</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">디지털 통합 미디어 비즈니스 허브</h2>
+          </div>
+
+          <!-- Side-by-Side 3 column Flip Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Link Hub Card 1: Media Production & Creative Network -->
+            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+              <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
+                
+                <!-- FRONT FACE: Concept Image -->
+                <div class="flip-card-front relative flex flex-col justify-between p-8 text-white bg-slate-900 border border-slate-200/80">
+                  <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop" 
+                       alt="방송국 미디어 주조정실 및 프로덕션 스튜디오" 
+                       class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+                       referrerpolicy="no-referrer" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30"></div>
+
+                  <!-- Top Badge -->
+                  <div class="relative z-10 flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-white bg-blue-600/90 backdrop-blur-md uppercase border border-white/20 shadow-xs">
+                      PRODUCTION & CREATIVE
+                    </span>
+                  </div>
+
+                  <!-- Bottom Front Title -->
+                  <div class="relative z-10">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-blue-400 mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+                      미디어 프로덕션 &<br />크리에이티브 네트워크
+                    </h3>
+                    <p class="text-xs text-slate-300 font-medium line-clamp-2">
+                      자체 전문 스튜디오 & 4K 고품질 미디어 종합 프로덕션
+                    </p>
+                  </div>
+                </div>
+
+                <!-- BACK FACE: Text Content -->
+                <div class="flip-card-back glass p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-white border border-slate-200/80">
+                  <div class="absolute -top-10 -right-10 w-44 h-44 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+                  
+                  <div>
+                    <div class="flex items-center justify-between mb-5">
+                      <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-blue-700 bg-blue-50 border border-blue-200 uppercase">
+                        Production & Creative
+                      </span>
+                    </div>
+
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">미디어 프로덕션 & 크리에이티브</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4 font-medium">
+                      EBS·웅진·주요 대학 등 <strong>100,000편+</strong> 콘텐츠 개발 노하우와 올인원(All-in-One) 프로덕션 시스템으로 고품질 미디어를 제작합니다.
+                    </p>
+
+                    <ul class="space-y-2 text-xs text-slate-600">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>All-in-One 제작</strong>: 맞춤 기획, 4K 고해상도 촬영, 모션그래픽 원스톱 수행</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>종합 미디어센터</strong>: 이러닝 전용 스튜디오 6개실 및 다목적 촬영 인프라</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0 mt-1.5"></span>
+                        <span><strong>맞춤 파이프라인</strong>: 이러닝, 기업 브랜딩, 광고·프로모션, SNS 콘텐츠</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mt-6 pt-5 border-t border-slate-200">
+                    <a href="#contact" class="clickable inline-flex items-center gap-2 text-xs font-bold text-slate-900 tracking-widest hover:text-blue-600 transition-colors">
+                      영상 제작 및 제휴 문의
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Link Hub Card 2: WHO CAMPUS -->
+            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+              <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
+                
+                <!-- FRONT FACE: Concept Image -->
+                <div class="flip-card-front relative flex flex-col justify-between p-8 text-white bg-slate-900 border border-slate-200/80">
+                  <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop" 
+                       alt="WHO CAMPUS 평생교육원" 
+                       class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+                       referrerpolicy="no-referrer" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30"></div>
+
+                  <!-- Top Badge -->
+                  <div class="relative z-10 flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-white bg-blue-600/90 backdrop-blur-md uppercase border border-white/20 shadow-xs">
+                      WHO CAMPUS
+                    </span>
+                  </div>
+
+                  <!-- Bottom Front Title -->
+                  <div class="relative z-10">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-blue-400 mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+                      후캠퍼스<br />온·오프라인 평생교육원
+                    </h3>
+                    <p class="text-xs text-slate-300 font-medium line-clamp-2">
+                      평생 교육 자산 형성 & 맞춤형 실무 아카데미
+                    </p>
+                  </div>
+                </div>
+
+                <!-- BACK FACE: Text Content -->
+                <div class="flip-card-back glass p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-white border border-slate-200/80">
+                  <div class="absolute -top-10 -right-10 w-44 h-44 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+                  
+                  <div>
+                    <div class="flex items-center justify-between mb-6">
+                      <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        </svg>
+                      </div>
+                      <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-blue-700 bg-blue-50 border border-blue-200 uppercase">
+                        WHO CAMPUS
+                      </span>
+                    </div>
+
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-3">후캠퍼스<br /><span class="inline-block mt-1">온·오프라인 평생교육원</span></h3>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-6 font-medium">
+                      평생 교육 자산 형성을 모토로 인가받은 평생교육 기관 후캠퍼스 플랫폼을 운영합니다. 수만 명의 직무 교육 및 자격 과정, 온라인과 오프라인 현장 강의를 아우르는 맞춤형 전문 아카데미 시스템을 지원합니다.
+                    </p>
+
+                    <ul class="space-y-2.5">
+                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
+                        <span>기업체 필수 법정 의무 교육 및 온·오프라인 맞춤형 직무 수료 과정 지원</span>
+                      </li>
+                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
+                        <span>차세대 LMS 시스템과 온·오프라인 교육 인프라를 통합한 원스톱 솔루션</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mt-8 pt-6 border-t border-slate-200">
+                    <a href="https://hucampus.co.kr" target="_blank" class="clickable inline-flex items-center gap-2 text-xs font-bold text-slate-900 tracking-widest hover:text-blue-600 transition-colors">
+                      후캠퍼스 학습 플랫폼 바로가기
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Link Hub Card 3: Media & Journalism -->
+            <div class="flip-card-container perspective-1000 min-h-[460px] cursor-pointer">
+              <div class="flip-card-inner shadow-xl hover:shadow-2xl rounded-3xl transition-all">
+                
+                <!-- FRONT FACE: Concept Image -->
+                <div class="flip-card-front relative flex flex-col justify-between p-8 text-white bg-slate-900 border border-slate-200/80">
+                  <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop" 
+                       alt="디지털 언론 미디어 데스크" 
+                       class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+                       referrerpolicy="no-referrer" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30"></div>
+
+                  <!-- Top Badge -->
+                  <div class="relative z-10 flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-white bg-blue-600/90 backdrop-blur-md uppercase border border-white/20 shadow-xs">
+                      MEDIA & JOURNALISM
+                    </span>
+                  </div>
+
+                  <!-- Bottom Front Title -->
+                  <div class="relative z-10">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-blue-400 mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+                      디지털 언론<br />미디어 네트워크
+                    </h3>
+                    <p class="text-xs text-slate-300 font-medium line-clamp-2">
+                      공신력 높은 인터넷 언론 미디어 & 전문 홍보 인프라
+                    </p>
+                  </div>
+                </div>
+
+                <!-- BACK FACE: Text Content -->
+                <div class="flip-card-back glass p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-white border border-slate-200/80">
+                  <div class="absolute -top-10 -right-10 w-44 h-44 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+                  
+                  <div>
+                    <div class="flex items-center justify-between mb-6">
+                      <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                      </div>
+                      <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-blue-700 bg-blue-50 border border-blue-200 uppercase">
+                        Media & Journalism
+                      </span>
+                    </div>
+
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-3">디지털 언론 미디어 네트워크</h3>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-6 font-medium">
+                      공공 입찰 및 기업 홍보의 높은 신뢰성을 구축하기 위해 (주)후미디어 고유의 전문 인터넷 언론 미디어 인프라를 운영합니다. 투명한 정보 제공과 정밀하고 전폭적인 대외 홍보력을 지원합니다.
+                    </p>
+
+                    <ul class="space-y-2.5">
+                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
+                        <span>B2B 및 기업 신뢰 확보를 위한 전문 언론 기획 및 기사 송출</span>
+                      </li>
+                      <li class="flex items-center gap-2.5 text-xs text-slate-600">
+                        <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
+                        <span>조달청 공공 입찰 참여 시 공식 가산점과 공신력 획득</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mt-8 pt-6 border-t border-slate-200">
+                    <a href="https://whomedia.co.kr" target="_blank" class="clickable inline-flex items-center gap-2 text-xs font-bold text-slate-900 tracking-widest hover:text-blue-600 transition-colors">
+                      인터넷 신문사 바로가기
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 6: Contact Form & Corporate Footer Info -->
+      <section id="section-contact" class="w-full min-h-screen relative flex flex-col justify-between overflow-hidden shrink-0 bg-white pt-16 md:pt-24 pb-0 px-6 md:px-20 lg:px-32">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-between h-full">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mt-10">
+            
+            <!-- Left Side: Contact CTA & Details -->
+            <div class="lg:col-span-5 flex flex-col gap-6">
+              <div>
+                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase">PROJECT CONSULTING</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1 leading-snug">성공적인 교육 프로젝트, 지금 상담부터 시작하세요</h2>
+                <p class="text-xs md:text-sm text-slate-600 mt-2 leading-relaxed">
+                  프로젝트 요구 분석부터 커리큘럼 설계, 미디어 제작 및 LMS 탑재까지 원스톱으로 대응합니다. 빠르고 정교한 맞춤 제안을 드리겠습니다.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-4 p-3.5 rounded-xl glass bg-slate-50/80 border-slate-200/80 hover:border-blue-300 transition-colors">
+                  <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 select-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-slate-500 block font-bold">대표 연락처</span>
+                    <a href="tel:02-6443-4222" class="clickable text-xs md:text-sm text-slate-900 font-bold hover:text-blue-600 transition-colors">02-6443-4222</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4 p-3.5 rounded-xl glass bg-slate-50/80 border-slate-200/80 hover:border-blue-300 transition-colors">
+                  <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 select-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-slate-500 block font-bold">공식 이메일</span>
+                    <a href="mailto:whomedia6104@gmail.com" class="clickable text-xs md:text-sm text-slate-900 font-bold hover:text-blue-600 transition-colors">whomedia6104@gmail.com</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4 p-3.5 rounded-xl glass bg-slate-50/80 border-slate-200/80 hover:border-blue-300 transition-colors">
+                  <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 select-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-slate-500 block font-bold">본사 주소</span>
+                    <span class="text-[11px] md:text-xs text-slate-900 font-bold leading-normal">
+                      서울 금천구 가산디지털2로 53 한라시그마밸리 1102호~1104호
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Contact Form Card -->
+            <div class="lg:col-span-7">
+              <form id="b2b-contact-form" class="glass p-6 md:p-8 rounded-3xl flex flex-col gap-4 bg-white border border-slate-200/80 shadow-xl">
+                
+                <!-- Category Select Pills -->
+                <div>
+                  <label class="text-[10px] font-bold tracking-wider text-slate-600 block uppercase mb-2">상담 분류 선택</label>
+                  <input type="hidden" name="category" id="form-category" value="영상 제작" />
+                  <div class="flex flex-wrap gap-2">
+                    <button type="button" data-val="영상 제작" class="form-cat-btn clickable px-3 py-1.5 rounded-full text-[11px] font-bold border border-blue-600 bg-blue-600 text-white shadow-xs transition-all">
+                      영상 제작
+                    </button>
+                    <button type="button" data-val="스튜디오 대관" class="form-cat-btn clickable px-3 py-1.5 rounded-full text-[11px] font-bold border border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all">
+                      스튜디오 대관
+                    </button>
+                    <button type="button" data-val="후캠퍼스 제휴" class="form-cat-btn clickable px-3 py-1.5 rounded-full text-[11px] font-bold border border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all">
+                      후캠퍼스 제휴
+                    </button>
+                    <button type="button" data-val="언론 기고" class="form-cat-btn clickable px-3 py-1.5 rounded-full text-[11px] font-bold border border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all">
+                      언론 기고
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Input grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="form-name" class="text-[10px] font-bold text-slate-600 block uppercase mb-1">담당자 성함 *</label>
+                    <input type="text" id="form-name" required class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 font-medium" placeholder="성함을 입력하세요">
+                  </div>
+                  <div>
+                    <label for="form-company" class="text-[10px] font-bold text-slate-600 block uppercase mb-1">회사명 / 기관명 *</label>
+                    <input type="text" id="form-company" required class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 font-medium" placeholder="기관명을 입력하세요">
+                  </div>
+                  <div>
+                    <label for="form-phone" class="text-[10px] font-bold text-slate-600 block uppercase mb-1">연락처 *</label>
+                    <input type="tel" id="form-phone" required class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 font-medium" placeholder="연락처를 입력하세요">
+                  </div>
+                  <div>
+                    <label for="form-email" class="text-[10px] font-bold text-slate-600 block uppercase mb-1">이메일 주소 *</label>
+                    <input type="email" id="form-email" required class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 font-medium" placeholder="이메일을 입력하세요">
+                  </div>
+                </div>
+
+                <!-- Message input -->
+                <div>
+                  <label for="form-message" class="text-[10px] font-bold text-slate-600 block uppercase mb-1">상세 문의 내용 *</label>
+                  <textarea id="form-message" required rows="3" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 font-medium resize-none" placeholder="요청하실 과업 사양 혹은 궁금하신 점을 작성해주세요."></textarea>
+                </div>
+
+                <!-- Consent and Submit button -->
+                <div class="flex items-center gap-2">
+                  <input type="checkbox" id="form-consent" required class="rounded border-slate-300 bg-slate-50 text-blue-600 focus:ring-blue-500">
+                  <label for="form-consent" class="text-[10px] text-slate-600 font-medium cursor-pointer">개인정보 수집 및 이용에 동의합니다. *</label>
+                </div>
+
+                <button type="submit" class="clickable w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-xs font-bold tracking-widest text-white shadow-md transition-all">
+                  프로젝트 문의 제출하기
+                </button>
+
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Strict Corporate Footer Section -->
+          <footer class="border-t border-slate-200 py-6 mt-10 text-center lg:text-left bg-white">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-4 text-[10px] md:text-[11px] text-slate-500 leading-relaxed font-medium">
+              <div class="max-w-4xl">
+                ㈜후미디어 <span class="mx-1">|</span> 대표이사: 황광성 <span class="mx-1">|</span> 사업자등록번호: 119-86-25861 <span class="mx-1">|</span> 주소: 서울특별시 금천구 가산디지털2로 53 한라시그마밸리 1102호 ~ 1104호 <br class="hidden lg:block"/>
+                Tel: 02-6443-4222 <span class="mx-1">|</span> Mail: whomedia6104@gmail.com
+              </div>
+              <div class="text-xs font-display text-slate-400 select-none">
+                © 2026 WHO MEDIA. All rights reserved.
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Full screen Portfolio Video Modal Popup -->
+    <div id="video-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-55 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="absolute inset-0 clickable" id="modal-backdrop"></div>
+      <div class="relative w-full max-w-4xl aspect-video glass rounded-3xl overflow-hidden scale-90 transition-transform duration-300 z-10 shadow-2xl border border-slate-200 bg-white">
+        <!-- Close button inside modal -->
+        <button id="modal-close" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-colors clickable">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <!-- Modal Video Iframe Player Container -->
+        <div class="w-full h-full" id="modal-player-container"></div>
+      </div>
+    </div>
+
+    <!-- Contact Submit Success Toast -->
+    <div id="success-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 glass p-5 rounded-2xl border border-blue-200 bg-white z-50 flex items-center gap-3.5 opacity-0 pointer-events-none transition-all duration-500 shadow-2xl">
+      <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 select-none shrink-0 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div>
+        <h4 class="text-xs font-extrabold text-slate-900">B2B 상담 접수 완료</h4>
+        <p class="text-[10px] text-slate-600 mt-0.5">후미디어 담당자가 신속히 확인하여 답변을 드리겠습니다.</p>
+      </div>
+    </div>
+
+    <!-- Script loading: GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Script loading: Core Main Logic (TypeScript compiles down via Vite) -->
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
-
