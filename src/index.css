@@ -8,44 +8,44 @@
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-bg: #f8fafc;
-  --color-bg-dark: #0b0f19;
+  --color-bg-dark: #03050a;
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
   --color-card-bg: #ffffff;
   --color-border: #e2e8f0;
 
-  /* 2. Global Spacing & Layout Rhythm */
-  --spacing-section: clamp(3.5rem, 5vw, 6rem);
-  --spacing-element: 1.5rem;
+  /* 2. Global Spacing & Layout Rhythm (1.5x Increased Editorial Whitespace) */
+  --spacing-section: clamp(5rem, 8.5vw, 9.5rem);
+  --spacing-element: 2rem;
 
   /* 3. Border Radii & Transitions */
   --radius-card: 1.5rem;   /* 24px */
   --radius-button: 9999px; /* Pill */
-  --transition-speed: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-speed: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   /* 4. Primary Font Family Stack */
   --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   --font-display: 'Montserrat', var(--font-pretendard);
 
-  /* 5. Fluid Typography Scale Variables (Mobile -> Desktop) */
-  --font-size-h1: clamp(2.5rem, 3.5vw + 1.25rem, 4rem);       /* 40px -> 64px */
-  --font-size-h2: clamp(2rem, 2.2vw + 1.25rem, 3rem);         /* 32px -> 48px */
-  --font-size-h3: clamp(1.375rem, 0.8vw + 1.125rem, 1.75rem);  /* 22px -> 28px */
-  --font-size-body1: clamp(1rem, 0.3vw + 0.925rem, 1.125rem); /* 16px -> 18px */
-  --font-size-body2: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);   /* 14px -> 16px */
+  /* 5. Fluid Typography Scale Variables (Editorial Size Contrast) */
+  --font-size-h1: clamp(2.75rem, 4.5vw + 1rem, 5.25rem);       /* 44px -> 84px */
+  --font-size-h2: clamp(2.25rem, 3vw + 1rem, 3.75rem);         /* 36px -> 60px */
+  --font-size-h3: clamp(1.375rem, 1vw + 1rem, 2.25rem);        /* 22px -> 36px */
+  --font-size-body1: clamp(1rem, 0.2vw + 0.95rem, 1.125rem);   /* 16px -> 18px */
+  --font-size-body2: clamp(0.875rem, 0.2vw + 0.8rem, 1rem);     /* 14px -> 16px */
   --font-size-caption: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem); /* 12px -> 14px */
 
-  /* Line Heights & Letter Spacing */
-  --lh-h1: 1.2;
-  --lh-h2: 1.3;
-  --lh-h3: 1.4;
-  --lh-body: 1.6;
+  /* Line Heights & Editorial Letter Spacing */
+  --lh-h1: 1.12;
+  --lh-h2: 1.2;
+  --lh-h3: 1.3;
+  --lh-body: 1.7;
   --lh-caption: 1.4;
 
-  --ls-h1: -0.02em;
-  --ls-h2: -0.015em;
-  --ls-h3: -0.01em;
-  --ls-caption: 0.01em;
+  --ls-h1: -0.035em;
+  --ls-h2: -0.025em;
+  --ls-h3: -0.015em;
+  --ls-caption: 0.02em;
 
   /* Font Weights */
   --fw-h1: 800;
@@ -289,6 +289,60 @@ p, li, span, a, button, label, input, textarea {
 
 .glass-shine:hover::before {
   transform: translateX(350%) skewX(-20deg);
+}
+
+/* Editorial Dark Section Grain & Deep Space Gradient Texture */
+.dark-bg-grain,
+#section-hero,
+.hero-section,
+.bg-slate-950,
+.bg-slate-900 {
+  position: relative;
+  background-color: #03050a;
+}
+
+.dark-bg-grain::before,
+#section-hero::before,
+.hero-section::before,
+.bg-slate-950::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse 85% 70% at 50% -10%, rgba(37, 99, 235, 0.12) 0%, rgba(3, 5, 10, 0.98) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Editorial Overlapping & Staggered Grid Layout Utilities */
+.editorial-overlap-top {
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .editorial-overlap-top {
+    margin-top: -4.5rem;
+  }
+  .editorial-stagger:nth-child(even) {
+    transform: translateY(2.5rem);
+  }
+}
+
+/* Staggered Fade-In Reveal Micro-Interactions */
+.stagger-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--stagger-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.stagger-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Hide scrollbar on horizontal container for desktop */

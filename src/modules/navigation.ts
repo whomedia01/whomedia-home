@@ -154,6 +154,34 @@ export function initIntersectionObserver(): void {
     if (el) observer.observe(el);
   });
 
+  // Staggered reveal observer for cards and editorial elements
+  const revealElements = document.querySelectorAll(".stagger-reveal, .portfolio-card, .flip-card, .process-step");
+  
+  // Assign stagger delay per container parent
+  const containers = document.querySelectorAll(".stagger-container, #section-about .grid, #section-portfolio .grid, #section-process .grid");
+  containers.forEach((container) => {
+    const children = container.querySelectorAll(".stagger-reveal, .portfolio-card, .flip-card, .process-step");
+    children.forEach((child, idx) => {
+      (child as HTMLElement).style.setProperty("--stagger-delay", `${idx * 0.1}s`);
+      child.classList.add("stagger-reveal");
+    });
+  });
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+        }
+      });
+    },
+    { root: null, rootMargin: "0px 0px -80px 0px", threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".stagger-reveal").forEach((el) => {
+    revealObserver.observe(el);
+  });
+
   // Header glassmorphism shadow scroll effect
   window.addEventListener("scroll", () => {
     const header = document.getElementById("site-header");
